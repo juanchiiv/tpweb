@@ -1,8 +1,9 @@
 <?php
     define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
-    require_once('controllers/seriesControler.php');
-    require_once('controllers/loginControler.php');
+    require_once "controllers/seriesControler.php";
+    require_once "controllers/loginControler.php";
+    require_once "controllers/userControler.php";
     
   
     if (!empty($_GET['action'])) {
@@ -29,6 +30,12 @@
         case 'login': 
             $loginControler = new loginController();
             $loginControler->showLogin();
+        case 'newuser': 
+            $loginControler = new loginController();
+            $loginControler->registrarUser();
+        case 'registrar': 
+            $loginControler = new loginController();
+            $loginControler->showUserForm();
         default: 
             echo('404 Page not found'); 
             break;

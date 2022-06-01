@@ -11,5 +11,9 @@
             $this->model = new userModel();
            
         }
+
+        function registrarUser(){
+            
+        }
     
     }

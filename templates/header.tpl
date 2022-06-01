@@ -12,4 +12,5 @@
         <li><a href="episodios">Episodios</a></li>
         <li><a href="temporadas">Temporadas</a></li>
         <li><a href="login">Login</a></li>
+        <li><a href="registrar">Registrar</a></li>
     </ul>

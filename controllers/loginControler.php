@@ -9,11 +9,19 @@
 
         function __construct (){
             $this->view = new loginView();
-           // $this->Model = new loginModel();
+            $this->Model = new userModel();
             
         }
         function showLogin(){
             $this->view->renderLogin();
+        }
+
+        function registrarUser(){
+            $this->model->registrarUser();
+        }
+
+        function showUserForm(){
+            $this->view->renderUserForm();
         }
 
     }

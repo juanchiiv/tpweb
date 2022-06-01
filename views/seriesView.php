@@ -1,5 +1,5 @@
 <?php
-require_once ('smarty/libs/Smarty.class.php');
+require_once 'smarty/libs/Smarty.class.php';
 
 class seriesView {
    
@@ -8,7 +8,7 @@ class seriesView {
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
-        $plantilla->assign('tareas', $serie);
+        $plantilla->assign('serie', $serie);
         
         $plantilla->display('templates/serie.tpl');
        
@@ -17,7 +17,7 @@ class seriesView {
     function renderHome(){
         $plantilla = new Smarty();
 
-        $plantilla->assign('BASE_URL', BASE_URL);
+       // $plantilla->assign('BASE_URL', BASE_URL);
        
         
         $plantilla->display('templates/serie.tpl');
