@@ -8,7 +8,7 @@ class seriesModel{
 
         $user = 'root';
         $pass = '';
-        $dbname = 'todo'; /*cambiar nombre base de datos*/
+        $dbname = 'ahs'; /*cambiar nombre base de datos*/
         $host = 'localhost';
         $port = '3306';
 
