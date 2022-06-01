@@ -8,33 +8,21 @@ class userModel{
 
         $user = 'root';
         $pass = '';
-        $dbname = 'todo'; /*cambiar nombre base de datos*/
+        $dbname = 'ahs'; /*cambiar nombre base de datos*/
         $host = 'localhost';
         $port = '3306';
 
         $this->db  = new PDO("mysql:host=$host:$port;dbname=$dbname", $user, $pass);
     }
 
-    function registrarUser(){
-        if(!empty($_POST['email'])&& !empty($_POST['password'])){
-            $userEmail=$_POST['email'];
-            $userPassword=password_hash($_POST['password'], PASSWORD_BCRYPT);
-     
-            //Guardo el nuevo usuario en la base de datos
-            $db = new PDO('mysql:host=localhost;'.'dbname=ejemploHashing;charset=utf8', 'root', '');
-            $query = $db->prepare('INSERT INTO users (email, password) VALUES (? , ?)');
-            $query->execute([$userEmail,$userPassword]);
-          
-        }
-     
-    }
+   
 
     function loginUser(){
         if(!empty($_POST['email'])&& !empty($_POST['password'])){
             $userEmail=$_POST['email'];
             $userPassword=$_POST['password'];
             //Obtengo el usuario de la base de datos
-            $db = new PDO('mysql:host=localhost;'.'dbname=ejemploHashing;charset=utf8', 'root', '');
+            $db = new PDO('mysql:host=localhost;'.'dbname=ahs;charset=utf8', 'root', '');
             $query = $db->prepare('SELECT * FROM users WHERE email = ?');
             $query->execute([$userEmail]);
             $user = $query->fetch(PDO::FETCH_OBJ);

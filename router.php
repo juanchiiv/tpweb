@@ -30,12 +30,6 @@
         case 'login': 
             $loginControler = new loginController();
             $loginControler->showLogin();
-        case 'newuser': 
-            $loginControler = new loginController();
-            $loginControler->registrarUser();
-        case 'registrar': 
-            $loginControler = new loginController();
-            $loginControler->showUserForm();
         default: 
             echo('404 Page not found'); 
             break;

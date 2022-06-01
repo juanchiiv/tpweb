@@ -16,12 +16,6 @@
             $this->view->renderLogin();
         }
 
-        function registrarUser(){
-            $this->model->registrarUser();
-        }
-
-        function showUserForm(){
-            $this->view->renderUserForm();
-        }
+       
 
     }

@@ -4,11 +4,11 @@ require_once 'smarty/libs/Smarty.class.php';
 class seriesView {
    
    
-    function renderSeries($serie){
+    function renderSeries($series){
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
-        $plantilla->assign('serie', $serie);
+        $plantilla->assign('series', $series);
         
         $plantilla->display('templates/serie.tpl');
        

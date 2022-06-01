@@ -14,12 +14,14 @@ class seriesController{
     }
     
     function showEpisodios(){
-        $episodios = $this->episodModel->getSerie();
+        $episod= 'episodios';
+        $episodios = $this->episodModel->getSerie($episod);
         $this->view->renderSeries($episodios); 
     }
 
     function showTemporadas(){
-        $temporadas = $this->tempoModel->getSerie();
+        $tempo= 'temporada';
+        $temporadas = $this->tempoModel->getSerie($tempo);
         $this->view->renderSeries($temporadas); 
     }
     function showHome(){
