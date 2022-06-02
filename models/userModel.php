@@ -4,6 +4,7 @@ require_once 'helpers/sessionhelper.php';
 class userModel{
 
     private $db;
+    private $helper;
 
     function __construct(){
 
@@ -28,7 +29,7 @@ class userModel{
      
             //Si el usuario existe y las contraseñas coinciden
             if($user && password_verify($userPassword,($user->password))){
-                SessionHelper->iniciaSesion($user.nombre);
+                $this->SessionHelper->iniciaSesion($user.nombre);
                
                 echo "Acceso exitoso";
             }else{

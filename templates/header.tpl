@@ -11,7 +11,7 @@
     <ul>
         <li><a href="episodios">Episodios</a></li>
         <li><a href="temporadas">Temporadas</a></li>
-        {{if}
+        {{if  !($_SESSION["logueado"])}
              <li><a href="login">Login</a></li>
         {else}
             <li><a href="logout">Logout</a></li>

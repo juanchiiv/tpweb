@@ -8,7 +8,7 @@ class seriesModel{
 
         $user = 'root';
         $pass = '';
-        $dbname = 'ahs'; /*cambiar nombre base de datos*/
+        $dbname = 'ahs'; 
         $host = 'localhost';
         $port = '3306';
 
@@ -17,7 +17,7 @@ class seriesModel{
 
 
     function getSerie($pedido){
-        $sql = 'select * from '. $pedido .'' ; /*cambiar nombre de tabla*/ 
+        $sql = 'select * from '. $pedido .'' ;  
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute();
         $serie = $sentencia->fetchAll(PDO::FETCH_OBJECT);
