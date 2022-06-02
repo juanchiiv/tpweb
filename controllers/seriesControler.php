@@ -2,15 +2,15 @@
 require_once 'views/seriesView.php';
 require_once 'models/seriesModel.php';
 
-class seriesController{
+class SeriesController{
     private $view;
     private $tempoModel;
     private $episodModel;
 
     function __construct (){
-        $this->view = new seriesView();
-        $this->tempoModel = new seriesModel();
-        $this->episodModel = new seriesModel();
+        $this->view = new SeriesView();
+        $this->tempoModel = new SeriesModel();
+        $this->episodModel = new SeriesModel();
     }
     
     function showEpisodios(){

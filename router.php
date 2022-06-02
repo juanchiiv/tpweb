@@ -19,23 +19,29 @@
     switch ($params[0]) {
        
         case 'home': 
-           $seriesControler = new seriesController();
+           $seriesControler = new SeriesController();
            $seriesControler->showHome();
         case 'episodios': 
-            $seriesControler = new seriesController();
+            $seriesControler = new SeriesController();
             $seriesControler->showEpisodios();
         case 'temporadas': 
-            $seriesControler = new seriesController();
+            $seriesControler = new SeriesController();
             $seriesControler->showTemporadas();
         case 'login': 
-            $loginControler = new loginController();
+            $loginControler = new LoginController();
             $loginControler->showLogin();
         case 'loguear': 
-            $loginControler = new loginController();
+            $loginControler = new LoginController();
             $loginControler->loguear();
         case 'logout': 
-            $loginControler = new loginController();
+            $loginControler = new LoginController();
             $loginControler->logout();
+        case 'abm': 
+            $userControler = new UserController();
+            $userControler->renderAbm();
+        case 'agregar': 
+            $userControler = new UserController();
+            $userControler->agregarEpisod();
         default: 
             echo('404 Page not found'); 
             break;

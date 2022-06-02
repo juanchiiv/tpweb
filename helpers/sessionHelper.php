@@ -10,6 +10,7 @@
             session_start();
             $_SESSION["logueado"]= true;
             $_SESSION["username"]= $nombre;
+            header('location: home');
         }
 
         function sessionVerify(){
@@ -19,7 +20,7 @@
             return false;
         }
 
-        function logout(){
+        function cerrarSesion(){
             session_start();
             session_destroy();
             header ( 'location: home');

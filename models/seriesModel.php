@@ -1,6 +1,6 @@
 <?php
 
-class seriesModel{
+class SeriesModel{
 
     private $db;
 
@@ -20,7 +20,7 @@ class seriesModel{
         $sql = 'select * from '. $pedido .'' ;  
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute();
-        $serie = $sentencia->fetchAll(PDO::FETCH_OBJECT);
+        $serie = $sentencia->fetchAll(PDO::FETCH_OBJETC);
 
         return $serie;
     }

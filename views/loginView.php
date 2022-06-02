@@ -1,7 +1,7 @@
 <?php
 require_once 'smarty/libs/Smarty.class.php';
 
-class loginView {
+class LoginView {
    
     function renderLogin(){
         $plantilla = new Smarty();
