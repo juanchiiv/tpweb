@@ -17,10 +17,10 @@ class seriesModel{
 
 
     function getSerie($pedido){
-        $sql = 'select * from '. $pedido   ; /*cambiar nombre de tabla*/ 
+        $sql = 'select * from '. $pedido .'' ; /*cambiar nombre de tabla*/ 
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute();
-        $serie = $sentencia->fetch(PDO::FETCH_OBJET);
+        $serie = $sentencia->fetchAll(PDO::FETCH_OBJECT);
 
         return $serie;
     }

@@ -30,6 +30,12 @@
         case 'login': 
             $loginControler = new loginController();
             $loginControler->showLogin();
+        case 'loguear': 
+            $loginControler = new loginController();
+            $loginControler->loguear();
+        case 'logout': 
+            $loginControler = new loginController();
+            $loginControler->logout();
         default: 
             echo('404 Page not found'); 
             break;

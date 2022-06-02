@@ -20,6 +20,6 @@ class seriesView {
        // $plantilla->assign('BASE_URL', BASE_URL);
        
         
-        $plantilla->display('templates/serie.tpl');
+        $plantilla->display('templates/home.tpl');
     }
 }

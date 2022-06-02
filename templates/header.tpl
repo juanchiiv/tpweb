@@ -11,5 +11,10 @@
     <ul>
         <li><a href="episodios">Episodios</a></li>
         <li><a href="temporadas">Temporadas</a></li>
-        <li><a href="login">Login</a></li>
+        {{if}
+             <li><a href="login">Login</a></li>
+        {else}
+            <li><a href="logout">Logout</a></li>
+        {/if}}
+       
     </ul>
