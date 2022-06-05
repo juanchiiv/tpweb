@@ -36,6 +36,16 @@ CREATE TABLE `episodios` (
   `id_temporada_FK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `episodios` (`id_episodios`, `nombre`, `descripcion`, `audiencia`, `id_temporada_FK` ) VALUES
+('1', 'piloto', 'whbbjwfhbwfejwefhbwfjwbf', '3.18', '1'),
+('2', 'home invasion', 'hhrwgfhjfwehfjefhw', '2.46', '1' ),
+('3', 'welcome to briarcliff', 'hhrwgfhjfwehfjefhw', '3.85', '2' ),
+('4', 'tricks and treats', 'hhrwgfhjfwehfjefhw', '3.06', '2' ),
+('5', 'bitchcraft', 'hhrwgfhjfwehfjefhw', '5.54', '3' ),
+('6', 'boy parts', 'hhrwgfhjfwehfjefhw', '4.51', '3' );
+
+
+
 -- --------------------------------------------------------
 
 --

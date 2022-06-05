@@ -22,8 +22,8 @@ class UserModel{
 
     function loguear(){
         if(!empty($_POST['email'])&& !empty($_POST['password'])){
-            $userEmail=$_POST['email'];
-            $userPassword=$_POST['password'];
+            $userEmail= $_POST['email'];
+            $userPassword= $_POST['password'];
             $query = $db->prepare('SELECT * FROM users WHERE email = ?');
             $query->execute([$userEmail]);
             $user = $query->fetch(PDO::FETCH_OBJ);
@@ -31,7 +31,7 @@ class UserModel{
             //Si el usuario existe y las contraseñas coinciden
             if($user && password_verify($userPassword,($user->password))){
                 $this->SessionHelper->iniciaSesion($user->nombre);
-               header('location: home');
+               
                 
             }else{
                 echo "Acceso denegado";

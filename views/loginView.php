@@ -6,19 +6,12 @@ class LoginView {
     function renderLogin(){
         $plantilla = new Smarty();
 
-        //$plantilla->assign('BASE_URL', BASE_URL);
+        $plantilla->assign('BASE_URL', BASE_URL);
        
         
         $plantilla->display('templates/login.tpl');
     }
-    function renderUserForm(){
-        $plantilla = new Smarty();
-
-        //$plantilla->assign('BASE_URL', BASE_URL);
-       
-        
-        $plantilla->display('templates/userForm.tpl');
-    }
+    
 
 
 

@@ -11,7 +11,7 @@ class UserView {
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
-       
+        $plantilla->assign('$_SESSION', $_SESSION);
         
         $plantilla->display('templates/userAbm.tpl');
     }
