@@ -15,9 +15,7 @@
            
         }
 
-        function renderAbm($logueado){
-            $this->view->renderAbm($logueado);
-        }
+       
 
         function agregarEpisod(){
             $this->model->agregaEpisod();

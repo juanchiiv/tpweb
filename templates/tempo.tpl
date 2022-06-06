@@ -19,4 +19,7 @@
             
         </tr>
         {/foreach}
+    {if $logueado}
+        {include file= "userAbm.tpl"}
+    {/if}
 {include file="footer.tpl"}

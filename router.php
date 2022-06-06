@@ -37,8 +37,6 @@
             $loginControler->loguear($logueado->sessionVerify());
         case 'logout': 
             $loginControler->logout($logueado->sessionVerify());
-        case 'abm':            
-            $userControler->renderAbm($logueado->sessionVerify());
         case 'agregar': 
             $userControler->agregarEpisod($logueado->sessionVerify());
         default: 

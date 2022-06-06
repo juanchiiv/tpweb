@@ -7,12 +7,5 @@ class UserView {
    
     
 
-    function renderAbm($logueado){
-        $plantilla = new Smarty();
-
-        $plantilla->assign('BASE_URL', BASE_URL);
-        $plantilla->assign('logueado',$logueado);
-        
-        $plantilla->display('templates/userAbm.tpl');
-    }
+  
 }
