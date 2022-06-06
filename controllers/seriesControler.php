@@ -13,19 +13,19 @@ class SeriesController{
         $this->episodModel = new SeriesModel();
     }
     
-    function showEpisodios(){
+    function showEpisodios($logueado){
         $episod= 'episodios';
         $episodios = $this->episodModel->getSerie($episod);
-        $this->view->renderSeries($episodios); 
+        $this->view->renderSeries($episod, $episodios, $logueado); 
     }
 
-    function showTemporadas(){
+    function showTemporadas($logueado){
         $tempo= 'temporada';
         $temporadas = $this->tempoModel->getSerie($tempo);
-        $this->view->renderSeries($temporadas); 
+        $this->view->renderSeries($tempo ,$temporadas, $logueado); 
     }
-    function showHome(){
-        $this->view->renderHome();
+    function showHome($logueado){
+        $this->view->renderHome($logueado);
     }
 
 

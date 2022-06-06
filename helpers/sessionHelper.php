@@ -3,14 +3,14 @@
     class SessionHelper {
 
         function __construct(){
-
+            
         }
 
-        function iniciaSession($nombre){
-            session_start();
+        function iniciaSession($nombre){ 
+            session_start();     
             $_SESSION["logueado"]= true;
             $_SESSION["username"]= $nombre;
-            header('location: home');
+            
         }
 
         function sessionVerify(){
@@ -21,9 +21,9 @@
         }
 
         function cerrarSesion(){
-            session_start();
-            session_destroy();
-            header ( 'location: home');
+            
+            session_unset();
+            
         }
 
     }

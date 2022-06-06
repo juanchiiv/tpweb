@@ -7,6 +7,7 @@ class LoginView {
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
+        
        
         
         $plantilla->display('templates/login.tpl');

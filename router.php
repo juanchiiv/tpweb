@@ -4,6 +4,13 @@
     require_once "controllers/seriesControler.php";
     require_once "controllers/loginControler.php";
     require_once "controllers/userControler.php";
+    require_once "helpers/sessionHelper.php";
+
+
+    $seriesControler = new SeriesController();
+    $loginControler = new LoginController();
+    $logueado= new SessionHelper();
+    $userControler = new UserController($logueado); 
     
   
     if (!empty($_GET['action'])) {
@@ -19,29 +26,21 @@
     switch ($params[0]) {
        
         case 'home': 
-           $seriesControler = new SeriesController();
-           $seriesControler->showHome();
+           $seriesControler->showHome($logueado->sessionVerify());
         case 'episodios': 
-            $seriesControler = new SeriesController();
-            $seriesControler->showEpisodios();
+            $seriesControler->showEpisodios($logueado->sessionVerify());
         case 'temporadas': 
-            $seriesControler = new SeriesController();
-            $seriesControler->showTemporadas();
-        case 'login': 
-            $loginControler = new LoginController();
-            $loginControler->showLogin();
+            $seriesControler->showTemporadas($logueado->sessionVerify());
+        case 'login':           
+            $loginControler->showLogin($logueado->sessionVerify());
         case 'loguear': 
-            $loginControler = new LoginController();
-            $loginControler->loguear();
+            $loginControler->loguear($logueado->sessionVerify());
         case 'logout': 
-            $loginControler = new LoginController();
-            $loginControler->logout();
-        case 'abm': 
-            $userControler = new UserController();
-            $userControler->renderAbm();
+            $loginControler->logout($logueado->sessionVerify());
+        case 'abm':            
+            $userControler->renderAbm($logueado->sessionVerify());
         case 'agregar': 
-            $userControler = new UserController();
-            $userControler->agregarEpisod();
+            $userControler->agregarEpisod($logueado->sessionVerify());
         default: 
             echo('404 Page not found'); 
             break;

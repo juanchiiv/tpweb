@@ -24,7 +24,7 @@ class UserModel{
         if(!empty($_POST['email'])&& !empty($_POST['password'])){
             $userEmail= $_POST['email'];
             $userPassword= $_POST['password'];
-            $query = $db->prepare('SELECT * FROM users WHERE email = ?');
+            $query = $db->prepare('select * FROM login WHERE email = ?');
             $query->execute([$userEmail]);
             $user = $query->fetch(PDO::FETCH_OBJ);
      
@@ -45,7 +45,7 @@ class UserModel{
         $descripcion = $_POST['descripcion'];
         $audiencia= $_POST['audiencia'];
         $temporada= $_POST['temporada'];
-        $sql = "INSERT INTO episodios (nombre, descripcion, audiencia, temporada ) 
+        $sql = "insert INTO episodios (nombre, descripcion, audiencia, temporada ) 
                 VALUES (?, ?, ?, ?)";
     
         

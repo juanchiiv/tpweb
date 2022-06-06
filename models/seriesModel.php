@@ -20,7 +20,7 @@ class SeriesModel{
         $sql = 'select * from '. $pedido .'' ;  
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute();
-        $serie = $sentencia->fetchAll(PDO::FETCH_OBJETC);
+        $serie = $sentencia->fetchAll(PDO::FETCH_NAMED);
 
         return $serie;
     }
