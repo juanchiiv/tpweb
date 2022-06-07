@@ -20,24 +20,14 @@ class UserModel{
 
    
 
-    function loguear(){
-        if(!empty($_POST['email'])&& !empty($_POST['password'])){
-            $userEmail= $_POST['email'];
-            $userPassword= $_POST['password'];
-            $query = $db->prepare('select * FROM login WHERE email = ?');
+    function loguear($userEmail){
+        
+            $query = $this->db->prepare('select * FROM login WHERE email = ?');
             $query->execute([$userEmail]);
             $user = $query->fetch(PDO::FETCH_OBJ);
-     
-            //Si el usuario existe y las contraseñas coinciden
-            if($user && password_verify($userPassword,($user->password))){
-                $this->SessionHelper->iniciaSesion($user->nombre);
-               
-                
-            }else{
-                echo "Acceso denegado";
-            }
-     
-       }
+            return $user;
+            
+       
     }
 
     function agregaEpisod(){
