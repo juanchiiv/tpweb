@@ -4,13 +4,12 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 require_once "controllers/seriesControler.php";
 require_once "controllers/loginControler.php";
 require_once "controllers/userControler.php";
-require_once "helpers/sessionHelper.php";
+
 
 
 $seriesControler = new SeriesController();
 $loginControler = new LoginController();
-$logueado = new SessionHelper();
-$userControler = new UserController($logueado);
+$userControler = new UserController();
 
 
 if (!empty($_GET['action'])) {
@@ -26,26 +25,25 @@ $params = explode('/', $action);
 switch ($params[0]) {
 
     case 'home':
-        $seriesControler->showHome($logueado->sessionVerify());
+        $seriesControler->showHome();
         break;
     case 'episodios':
-        $seriesControler->showEpisodios($logueado->sessionVerify());
+        $seriesControler->showEpisodios();
         break;
     case 'temporadas':
-        $seriesControler->showTemporadas($logueado->sessionVerify());
+        $seriesControler->showTemporadas();
         break;
     case 'login':
-        $loginControler->showLogin($logueado->sessionVerify());
+        $loginControler->showLogin();
         break;
     case 'loguear':
-        $loginControler->loguear($logueado->sessionVerify());
+        $loginControler->loguear();
         break;
-        $seriesControler->showHome($logueado->sessionVerify());
     case 'logout':
-        $loginControler->logout($logueado->sessionVerify());
+        $loginControler->logout();
         break;
     case 'agregar':
-        $userControler->agregarEpisod($logueado->sessionVerify());
+        $userControler->agregarEpisod();
         break;
     default:
         echo ('404 Page not found');

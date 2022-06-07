@@ -2,32 +2,40 @@
 require_once 'views/seriesView.php';
 require_once 'models/seriesModel.php';
 
-class SeriesController{
+class SeriesController
+{
     private $view;
     private $tempoModel;
     private $episodModel;
+    private $helper;
 
-    function __construct (){
+    function __construct()
+    {
         $this->view = new SeriesView();
         $this->tempoModel = new SeriesModel();
         $this->episodModel = new SeriesModel();
-    }
-    
-    function showEpisodios($logueado){
-        $episod= 'episodios';
-        $episodios = $this->episodModel->getSerie($episod);
-        $this->view->renderSeries($episod, $episodios, $logueado); 
+        $this->helper = new SessionHelper();
+        
     }
 
-    function showTemporadas($logueado){
-        $tempo= 'temporada';
-        $temporadas = $this->tempoModel->getSerie($tempo);
-        $this->view->renderSeries($tempo ,$temporadas, $logueado); 
+    function showEpisodios()
+    {
+        $episod = 'episodios';
+        $episodios = $this->episodModel->getSerie($episod);
+        $logueado= $this->helper->sessionVerify();
+        $this->view->renderSeries($episod, $episodios, $logueado);
     }
-    function showHome($logueado){
+
+    function showTemporadas()
+    {
+        $tempo = 'temporada';
+        $temporadas = $this->tempoModel->getSerie($tempo);
+        $logueado= $this->helper->sessionVerify();
+        $this->view->renderSeries($tempo, $temporadas, $logueado);
+    }
+    function showHome()
+    {
+        $logueado= $this->helper->sessionVerify();
         $this->view->renderHome($logueado);
     }
-
-
 }
-

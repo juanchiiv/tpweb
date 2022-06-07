@@ -49,5 +49,8 @@ class LoginController
     function logout()
     {
         $this->helper->cerrarSesion();
+        $logueado= $this->helper->sessionVerify();
+        $this->view->renderHome($logueado);
+
     }
 }

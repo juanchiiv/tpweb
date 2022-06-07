@@ -1,14 +1,16 @@
 <?php
 
-class SeriesModel{
+class SeriesModel
+{
 
     private $db;
 
-    function __construct(){
+    function __construct()
+    {
 
         $user = 'root';
         $pass = '';
-        $dbname = 'ahs'; 
+        $dbname = 'ahs';
         $host = 'localhost';
         $port = '3306';
 
@@ -16,13 +18,13 @@ class SeriesModel{
     }
 
 
-    function getSerie($pedido){
-        $sql = 'select * from '. $pedido .'' ;  
+    function getSerie($pedido)
+    {
+        $sql = 'select * from ' . $pedido . '';
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute();
         $serie = $sentencia->fetchAll(PDO::FETCH_NAMED);
 
         return $serie;
     }
-
 }
