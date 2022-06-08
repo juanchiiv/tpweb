@@ -20,12 +20,17 @@ class UserController
 
     function agregarEpisod()
     {
-        $this->model->agregaEpisod();
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $audiencia = $_POST['audiencia'];
+        $temporada = $_POST['temporada'];
+
+        $this->model->agregaEpisod($nombre, $descripcion, $audiencia, $temporada);
     }
 
-    function borrarEpisod()
+    function borrarEpisod($id)
     {
-        $this->model->borrarEpisod();
+        $this->model->borrarEpisod($id);
     }
 
     function modificarEpisod()
