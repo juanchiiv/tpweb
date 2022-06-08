@@ -22,4 +22,7 @@
             {/if}
         </tr>
         {/foreach}
+    {if $logueado}
+        {include file= "userEpisod.tpl"}
+    {/if}    
 {include file="footer.tpl"}
