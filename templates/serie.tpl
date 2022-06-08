@@ -17,8 +17,8 @@
             <td>{$serie.audiencia}</td>
             <td>{$serie.id_temporada_FK}</td>
             {if $logueado}
-                <td>href="{$BASE_URL}modificar/{$serie.id_episodios}">Modificar</td>
-                <td>href="{$BASE_URL}borrar/{$serie.id_episodios}">Borrar</td>
+                <td><a href="{$BASE_URL}modificar/{$serie.id_episodios}">Modificar</a></td>
+                <td><a href="{$BASE_URL}borrar/{$serie.id_episodios}">Borrar</a></td>
             {/if}
         </tr>
         {/foreach}
