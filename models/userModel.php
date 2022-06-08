@@ -45,4 +45,14 @@ class UserModel
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute([$nombre, $descripcion, $audiencia, $temporada]);
     }
+
+    function borrarEpisod()
+    {
+
+    }
+
+    function modificarEpisod()
+    {
+        
+    }
 }

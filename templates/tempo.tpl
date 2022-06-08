@@ -13,8 +13,8 @@
             <td>{$serie.id_temporada}</td>
             <td>{$serie.nombre_temporada}</td>
             {if $logueado}
-                <td>href="{$BASE_URL}modificar/{$serie.id_temporada}">Modificar</td>
-                <td>href="{$BASE_URL}borrar/{$serie.id_temporada}">Borrar</td>
+                <td><a href="{$BASE_URL}modificar/{$serie.id_temporada}">Modificar</a></td>
+                <td><a href="{$BASE_URL}borrar/{$serie.id_temporada}">Borrar</a></td>
             {/if}
             
         </tr>

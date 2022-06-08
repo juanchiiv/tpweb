@@ -5,26 +5,43 @@ class SessionHelper
 
     function __construct()
     {
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
     }
 
     function iniciaSesion($nombre)
     {
-        session_start();
+        if (!$this->sessionVerify()) {
+            session_start();
+        }
         $_SESSION["logueado"] = true;
         $_SESSION["username"] = $nombre;
     }
 
     function sessionVerify()
     {
-        if (isset($_SESSION) && ($_SESSION["logueado"] == true)) {
+        if (session_status() == PHP_SESSION_ACTIVE) {
             return true;
         }
         return false;
     }
 
+    function checkUser()
+    {
+        if ($this->sessionVerify()) {
+            if (isset($_SESSION["logueado"]) && $_SESSION["logueado"]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     function cerrarSesion()
     {
-
-        session_destroy();
+        if ($this->sessionVerify()) {
+            session_destroy();
+        }
     }
 }

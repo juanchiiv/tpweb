@@ -22,4 +22,14 @@ class UserController
     {
         $this->model->agregaEpisod();
     }
+
+    function borrarEpisod()
+    {
+        $this->model->borrarEpisod();
+    }
+
+    function modificarEpisod()
+    {
+        $this->model->modificarEpisod();
+    }
 }

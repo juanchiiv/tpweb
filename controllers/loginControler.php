@@ -21,7 +21,8 @@ class LoginController
     }
     function showLogin()
     {
-        $this->logView->renderLogin();
+        $logueado = $this->helper->checkUser();
+        $this->logView->renderLogin($logueado);
     }
 
     function loguear()
@@ -39,7 +40,7 @@ class LoginController
         //Si el usuario existe y las contraseñas coinciden
         if ($user && password_verify($userPassword, ($user->password))) {
             $this->helper->iniciaSesion($user->nombre);
-            $logueado= $this->helper->sessionVerify();
+            $logueado= $this->helper->checkUser();
             $this->view->renderHome($logueado);
         } else {
             echo "Usuario o contraseña incorrecta";
@@ -49,8 +50,6 @@ class LoginController
     function logout()
     {
         $this->helper->cerrarSesion();
-        $logueado= $this->helper->sessionVerify();
-        $this->view->renderHome($logueado);
-
+        header('location:' . BASE_URL . 'home');
     }
 }

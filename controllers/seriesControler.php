@@ -22,7 +22,7 @@ class SeriesController
     {
         $episod = 'episodios';
         $episodios = $this->episodModel->getSerie($episod);
-        $logueado= $this->helper->sessionVerify();
+        $logueado= $this->helper->checkUser();
         $this->view->renderSeries($episod, $episodios, $logueado);
     }
 
@@ -30,12 +30,12 @@ class SeriesController
     {
         $tempo = 'temporada';
         $temporadas = $this->tempoModel->getSerie($tempo);
-        $logueado= $this->helper->sessionVerify();
+        $logueado= $this->helper->checkUser();
         $this->view->renderSeries($tempo, $temporadas, $logueado);
     }
     function showHome()
     {
-        $logueado= $this->helper->sessionVerify();
+        $logueado= $this->helper->checkUser();
         $this->view->renderHome($logueado);
     }
 }
