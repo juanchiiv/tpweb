@@ -1,6 +1,6 @@
 <?php
 require_once 'models/userModel.php';
-require_once 'views/userView.php';
+require_once 'views/seriesView.php';
 require_once 'helpers/sessionHelper.php';
 
 class UserController
@@ -11,7 +11,7 @@ class UserController
 
     function __construct()
     {
-        $this->view = new UserView();
+        $this->view = new SeriesView();
         $this->model = new UserModel();
         $this->helper = new SessionHelper();
     }
@@ -31,6 +31,7 @@ class UserController
     function borrarEpisod($id)
     {
         $this->model->borrarEpisod($id);
+        
     }
 
     function modificarEpisod()

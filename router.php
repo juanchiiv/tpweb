@@ -44,7 +44,12 @@ switch ($params[0]) {
         break;
     case 'agregar':
         $userControler->agregarEpisod();
+        $seriesControler->showEpisodios();
         break;
+    case 'borrar':
+        $userControler->borrarEpisod($params[1]);
+        $seriesControler->showEpisodios();
+        break;  
     default:
         echo ('404 Page not found');
         break;

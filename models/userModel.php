@@ -34,7 +34,7 @@ class UserModel
     function agregaEpisod($nombre, $descripcion, $audiencia, $temporada)
     {
         
-        $sql = 'INSERT INTO episodios (nombre, descripcion, audiencia, temporada ) 
+        $sql = 'INSERT INTO episodios (nombre, descripcion, audiencia, id_temporada_FK) 
                 VALUES (?, ?, ?, ?)';
 
 
@@ -45,7 +45,7 @@ class UserModel
 
     function borrarEpisod($id)
     {
-        $sql = "DELETE FROM temporada WHERE id = ?";
+        $sql = "DELETE FROM episodios WHERE id_episodios = ?";
     
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute([$id]);
