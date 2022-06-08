@@ -1,4 +1,3 @@
-
 <h2>Episodios</h2>
     <form action="agregar" method="post">
         <label>Nombre <input type="text"></label>

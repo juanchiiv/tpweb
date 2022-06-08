@@ -31,14 +31,11 @@ class UserModel
         return $user;
     }
 
-    function agregaEpisod()
+    function agregaEpisod($nombre, $descripcion, $audiencia, $temporada)
     {
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-        $audiencia = $_POST['audiencia'];
-        $temporada = $_POST['temporada'];
-        $sql = "insert INTO episodios (nombre, descripcion, audiencia, temporada ) 
-                VALUES (?, ?, ?, ?)";
+        
+        $sql = 'INSERT INTO episodios (nombre, descripcion, audiencia, temporada ) 
+                VALUES (?, ?, ?, ?)';
 
 
 
@@ -46,9 +43,12 @@ class UserModel
         $sentencia->execute([$nombre, $descripcion, $audiencia, $temporada]);
     }
 
-    function borrarEpisod()
+    function borrarEpisod($id)
     {
-
+        $sql = "DELETE FROM temporada WHERE id = ?";
+    
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
     }
 
     function modificarEpisod()
