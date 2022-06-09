@@ -58,6 +58,10 @@ switch ($params[0]) {
         $userControler->borrarTemp($params[1]);
         $seriesControler->showTemporadas();
         break;
+    case 'modificar':
+        $userControler->modificarEpisod($params[1]);
+        $seriesControler->showEpisodios();
+            break;
     default:
         echo ('404 Page not found');
         break;

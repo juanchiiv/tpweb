@@ -48,8 +48,12 @@ class UserController
         
     }
 
-    function modificarEpisod()
+    function modificarEpisod($id)
     {
-        $this->model->modificarEpisod();
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $audiencia = $_POST['audiencia'];
+        $temporada = $_POST['temporada'];
+        $this->model->modificarEpisod($id, $nombre, $descripcion, $audiencia, $temporada);
     }
 }

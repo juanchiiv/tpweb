@@ -6,9 +6,11 @@
         <label>Temporada
             <select name="temporada">
                 <option >-- Seleccione --</option>
-                <option value=1>Murder house</option>
-                <option value=2>Asylum</option>
-                <option value=3>Coven</option>
+                {foreach from=$series item=serie}
+                    <option value= {$serie.id_temporada_FK}>Murder</option>
+                
+                {/foreach}
+                
             </select>
         </label>
         <button type="submit">Agregar epsisodio</button>
