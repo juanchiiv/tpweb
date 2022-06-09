@@ -6,8 +6,8 @@
         <label>Temporada
             <select name="temporada">
                 <option >-- Seleccione --</option>
-                {foreach from=$series item=serie}
-                    <option value= {$serie.id_temporada_FK}>Murder</option>
+                {foreach from=$temporadas item=temporada}
+                    <option value= {$temporada.id_temporada}>{$temporada.nombre_temporada}</option>
                 
                 {/foreach}
                 

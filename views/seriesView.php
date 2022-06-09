@@ -6,18 +6,30 @@ class SeriesView
 {
 
 
-    function renderSeries($pedido, $series, $logueado)
+    function renderSeries($series, $logueado, $temporadas)
     {
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
         $plantilla->assign('logueado', $logueado);
         $plantilla->assign('series', $series);
-        if ($pedido == 'temporada') {
-            $plantilla->display('templates/tempo.tpl');
-        } else {
-            $plantilla->display('templates/serie.tpl');
-        }
+        $plantilla->assign('temporadas', $temporadas);
+       
+        $plantilla->display('templates/serie.tpl');
+        
+    }
+
+    function renderTempo($series, $logueado)
+    {
+        $plantilla = new Smarty();
+
+        $plantilla->assign('BASE_URL', BASE_URL);
+        $plantilla->assign('logueado', $logueado);
+        $plantilla->assign('series', $series);
+        
+        
+        $plantilla->display('templates/tempo.tpl');
+       
     }
 
     function renderHome($logueado)
