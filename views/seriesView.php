@@ -30,4 +30,16 @@ class SeriesView
 
         $plantilla->display('templates/home.tpl');
     }
+
+    function renderEpiTemp($series, $logueado)
+    {
+        $plantilla = new Smarty();
+
+        $plantilla->assign('BASE_URL', BASE_URL);
+        $plantilla->assign('logueado', $logueado);
+        $plantilla->assign('series', $series);
+       
+        $plantilla->display('templates/serie.tpl');
+    }
+    
 }

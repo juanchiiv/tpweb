@@ -27,4 +27,14 @@ class SeriesModel
 
         return $serie;
     }
+
+    function getSerieId($id)
+    {
+        $sql = 'select * from episodios WHERE id_temporada_FK= ? ';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
+        $serie = $sentencia->fetchAll(PDO::FETCH_NAMED);
+
+        return $serie;
+    }
 }

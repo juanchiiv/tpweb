@@ -38,4 +38,11 @@ class SeriesController
         $logueado= $this->helper->checkUser();
         $this->view->renderHome($logueado);
     }
+
+    function showEpiTemp($id)
+    {
+        $episodios = $this->episodModel->getSerieId($id);
+        $logueado= $this->helper->checkUser();
+        $this->view->renderEpiTemp($episodios, $logueado);
+    }
 }

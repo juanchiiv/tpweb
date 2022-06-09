@@ -1,6 +1,6 @@
 <?php
 require_once 'models/userModel.php';
-require_once 'views/seriesView.php';
+require_once 'views/userView.php';
 require_once 'helpers/sessionHelper.php';
 
 class UserController
@@ -11,7 +11,7 @@ class UserController
 
     function __construct()
     {
-        $this->view = new SeriesView();
+        $this->view = new UserView();
         $this->model = new UserModel();
         $this->helper = new SessionHelper();
     }
@@ -53,7 +53,24 @@ class UserController
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $audiencia = $_POST['audiencia'];
-        $temporada = $_POST['temporada'];
-        $this->model->modificarEpisod($id, $nombre, $descripcion, $audiencia, $temporada);
+        
+        $this->model->modificarEpisod($id, $nombre, $descripcion, $audiencia);
+    }
+
+    function showEditEpi(){
+        $this->view->renderEditEpi();
+    }
+
+    function showEditTemp(){
+        $this->view->renderEditTemp();
+    }
+
+    function modificarTemp($id)
+    {
+        $numero = $_POST['id_temporada'];
+        $nombre = $_POST['nombre_temporda'];
+        
+        
+        $this->model->modificarTemp($id, $numero, $nombre);
     }
 }

@@ -17,7 +17,7 @@
             <td>{$serie.audiencia}</td>
             <td>{$serie.id_temporada_FK}</td>
             {if $logueado}
-                <td><a href="{$BASE_URL}modificar/{$serie.id_episodios}">Modificar</a></td>
+                <td><a href="{$BASE_URL}modificarEpi/{$serie.id_episodios}">Modificar</a></td>
                 <td><a href="{$BASE_URL}borrarEpisod/{$serie.id_episodios}">Borrar</a></td>
             {/if}
         </tr>
