@@ -14,7 +14,7 @@
             <td>{$serie.nombre_temporada}</td>
             {if $logueado}
                 <td><a href="{$BASE_URL}modificar/{$serie.id_temporada}">Modificar</a></td>
-                <td><a href="{$BASE_URL}borrar/{$serie.id_temporada}">Borrar</a></td>
+                <td><a href="{$BASE_URL}borrarTemp/{$serie.id_temporada}">Borrar</a></td>
             {/if}
             
         </tr>

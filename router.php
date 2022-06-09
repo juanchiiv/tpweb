@@ -42,14 +42,22 @@ switch ($params[0]) {
     case 'logout':
         $loginControler->logout();
         break;
-    case 'agregar':
+    case 'agregarEpisod':
         $userControler->agregarEpisod();
         $seriesControler->showEpisodios();
         break;
-    case 'borrar':
+    case 'agregarTemp':
+        $userControler->agregarTemp();
+        $seriesControler->showTemporadas();
+        break;
+    case 'borrarEpisod':
         $userControler->borrarEpisod($params[1]);
         $seriesControler->showEpisodios();
-        break;  
+        break;
+    case 'borrarTemp':
+        $userControler->borrarTemp($params[1]);
+        $seriesControler->showTemporadas();
+        break;
     default:
         echo ('404 Page not found');
         break;

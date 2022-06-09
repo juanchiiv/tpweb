@@ -28,9 +28,23 @@ class UserController
         $this->model->agregaEpisod($nombre, $descripcion, $audiencia, $temporada);
     }
 
+    function agregarTemp()
+    {
+        $id_temporada = $_POST['id_temporada'];
+        $nombre_temporada = $_POST['nombre_temporada'];
+
+        $this->model->agregaTemp($id_temporada, $nombre_temporada);
+    }
+
     function borrarEpisod($id)
     {
         $this->model->borrarEpisod($id);
+        
+    }
+
+    function borrarTemp($id)
+    {
+        $this->model->borrarTemp($id);
         
     }
 

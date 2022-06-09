@@ -43,9 +43,29 @@ class UserModel
         $sentencia->execute([$nombre, $descripcion, $audiencia, $temporada]);
     }
 
+    function agregaTemp($id_temporada, $nombre_temporada)
+    {
+        
+        $sql = 'INSERT INTO temporada (id_temporada, nombre_temporada) 
+                VALUES (?, ?)';
+
+
+
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id_temporada, $nombre_temporada]);
+    }
+
     function borrarEpisod($id)
     {
         $sql = "DELETE FROM episodios WHERE id_episodios = ?";
+    
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
+    }
+
+    function borrarTemp($id)
+    {
+        $sql = "DELETE FROM temporada WHERE id_temporada = ?";
     
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute([$id]);
