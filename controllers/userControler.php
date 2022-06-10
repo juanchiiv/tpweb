@@ -19,9 +19,9 @@ class UserController
 
 
     function agregarEpisod()
-    {   
+    {
         if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada'])) {
-            $logueado= $this->helper->checkUser();
+            $logueado = $this->helper->checkUser();
             $this->view->renderError($logueado);
             die();
         }
@@ -34,9 +34,9 @@ class UserController
     }
 
     function agregarTemp()
-    {   
-        if (empty($_POST['id_temporada']) || empty($_POST['nombre_temporada'])){
-            $logueado= $this->helper->checkUser();
+    {
+        if (empty($_POST['id_temporada']) || empty($_POST['nombre_temporada'])) {
+            $logueado = $this->helper->checkUser();
             $this->view->renderError($logueado);
             die();
         }
@@ -50,55 +50,53 @@ class UserController
     {
         $this->model->borrarEpisod($id);
         header('location:' . BASE_URL . 'episodios');
-        
     }
 
     function borrarTemp($id)
     {
         $this->model->borrarTemp($id);
         header('location:' . BASE_URL . 'temporadas');
-        
     }
 
-    function modificarEpisod($id)
-    {   
+    function modificarEpisod()
+    {
         if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada'])) {
-            $logueado= $this->helper->checkUser();
+            $logueado = $this->helper->checkUser();
             $this->view->renderError($logueado);
             die();
         }
+        $id = $_POST['id_episodios'];
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $audiencia = $_POST['audiencia'];
         $temporada = $_POST['id_temporada_FK'];
-        
+
         $this->model->modificarEpisod($id, $nombre, $descripcion, $audiencia, $temporada);
         header('location:' . BASE_URL . 'episodios');
-        
     }
 
-    function showEditEpi(){
-        $this->view->renderEditEpi();
-        
+    function showEditEpi($id)
+    {
+        $this->view->renderEditEpi($id);
     }
 
-    function showEditTemp(){
-        $this->view->renderEditTemp();
-       
+    function showEditTemp($id)
+    {
+
+        $this->view->renderEditTemp($id);
     }
 
-    function modificarTemp($id)
-    {   
-        if (empty($_POST['id_temporada']) || empty($_POST['nombre_temporada'])){
-            $logueado= $this->helper->checkUser();
+    function modificarTemp()
+    {
+        if (empty($_POST['id_temporada']) || empty($_POST['nombre_temporada'])) {
+            $logueado = $this->helper->checkUser();
             $this->view->renderError($logueado);
             die();
         }
-        $numero = $_POST['id_temporada'];
+        $id = $_POST['id_temporada'];
         $nombre = $_POST['nombre_temporda'];
-        
-        
-        $this->model->modificarTemp($id, $numero, $nombre);
-        header('location:' . BASE_URL . 'temporadas');
+
+
+        $this->model->modificarTemp($id, $nombre);
     }
 }

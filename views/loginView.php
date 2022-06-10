@@ -16,7 +16,8 @@ class LoginView
         $plantilla->display('templates/login.tpl');
     }
 
-    function renderError(){
+    function renderError()
+    {
         $plantilla = new Smarty();
         $plantilla->assign('BASE_URL', BASE_URL);
 

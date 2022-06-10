@@ -17,7 +17,7 @@ class LoginController
         $this->logView = new LoginView();
         $this->model = new UserModel();
         $this->helper = new SessionHelper();
-        $this->view= new SeriesView();
+        $this->view = new SeriesView();
     }
     function showLogin()
     {
@@ -40,7 +40,7 @@ class LoginController
         //Si el usuario existe y las contraseñas coinciden
         if ($user && password_verify($userPassword, ($user->password))) {
             $this->helper->iniciaSesion($user->nombre);
-            $logueado= $this->helper->checkUser();
+            $logueado = $this->helper->checkUser();
             $this->view->renderHome($logueado);
         } else {
             $this->logView->renderError();

@@ -15,16 +15,15 @@ class SeriesController
         $this->tempoModel = new SeriesModel();
         $this->episodModel = new SeriesModel();
         $this->helper = new SessionHelper();
-        
     }
 
     function showEpisodios()
     {
         $episod = 'episodios';
-        $tempo= 'temporada';
+        $tempo = 'temporada';
         $episodios = $this->episodModel->getSerie($episod);
         $temp = $this->tempoModel->getSerie($tempo);
-        $logueado= $this->helper->checkUser();
+        $logueado = $this->helper->checkUser();
         $this->view->renderSeries($episodios, $logueado, $temp);
     }
 
@@ -32,19 +31,19 @@ class SeriesController
     {
         $tempo = 'temporada';
         $temporadas = $this->tempoModel->getSerie($tempo);
-        $logueado= $this->helper->checkUser();
+        $logueado = $this->helper->checkUser();
         $this->view->renderTempo($temporadas, $logueado);
     }
     function showHome()
     {
-        $logueado= $this->helper->checkUser();
+        $logueado = $this->helper->checkUser();
         $this->view->renderHome($logueado);
     }
 
     function showEpiTemp($id)
     {
         $episodios = $this->episodModel->getSerieId($id);
-        $logueado= $this->helper->checkUser();
+        $logueado = $this->helper->checkUser();
         $this->view->renderEpiTemp($episodios, $logueado);
     }
 }

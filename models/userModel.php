@@ -33,7 +33,7 @@ class UserModel
 
     function agregaEpisod($nombre, $descripcion, $audiencia, $temporada)
     {
-        
+
         $sql = 'INSERT INTO episodios (nombre, descripcion, audiencia, id_temporada_FK) 
                 VALUES (?, ?, ?, ?)';
 
@@ -45,7 +45,7 @@ class UserModel
 
     function agregaTemp($id_temporada, $nombre_temporada)
     {
-        
+
         $sql = 'INSERT INTO temporada (id_temporada, nombre_temporada) 
                 VALUES (?, ?)';
 
@@ -58,7 +58,7 @@ class UserModel
     function borrarEpisod($id)
     {
         $sql = "DELETE FROM episodios WHERE id_episodios = ?";
-    
+
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute([$id]);
     }
@@ -66,29 +66,29 @@ class UserModel
     function borrarTemp($id)
     {
         $sql = "DELETE FROM temporada WHERE id_temporada = ?";
-    
+
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute([$id]);
     }
 
     function modificarEpisod($id, $nombre, $descripcion, $audiencia, $temporada)
     {
-        $sql = "UPDATE episodios SET nombre = $nombre,
-        descripcion = $descripcion,
-        audiencia = $audiencia,
-        id_temporada_fk = $temporada
+        $sql = "UPDATE episodios SET nombre = ?,
+        descripcion = ?,
+        audiencia = ?,
+        id_temporada_fk = ?
         WHERE id_episodios = ?";
 
         $sentencia = $this->db->prepare($sql);
-        $sentencia->execute([$id]);        
+        $sentencia->execute([$nombre, $descripcion, $audiencia, $temporada, $id]);
     }
 
     function modificarTemp($id, $nombre)
     {
-        $sql = "UPDATE temporada SET nombre_temporada = $nombre
+        $sql = "UPDATE temporada SET nombre_temporada = ?
         WHERE id_temporada = ?";
 
         $sentencia = $this->db->prepare($sql);
-        $sentencia->execute([$id]);        
+        $sentencia->execute([$nombre, $id]);
     }
 }

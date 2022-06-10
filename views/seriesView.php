@@ -14,9 +14,8 @@ class SeriesView
         $plantilla->assign('logueado', $logueado);
         $plantilla->assign('series', $series);
         $plantilla->assign('temporadas', $temporadas);
-       
+
         $plantilla->display('templates/serie.tpl');
-        
     }
 
     function renderTempo($series, $logueado)
@@ -26,10 +25,9 @@ class SeriesView
         $plantilla->assign('BASE_URL', BASE_URL);
         $plantilla->assign('logueado', $logueado);
         $plantilla->assign('series', $series);
-        
-        
+
+
         $plantilla->display('templates/tempo.tpl');
-       
     }
 
     function renderHome($logueado)
@@ -50,8 +48,7 @@ class SeriesView
         $plantilla->assign('BASE_URL', BASE_URL);
         $plantilla->assign('logueado', $logueado);
         $plantilla->assign('series', $series);
-       
+
         $plantilla->display('templates/serie.tpl');
     }
-    
 }

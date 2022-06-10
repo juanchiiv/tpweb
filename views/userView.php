@@ -8,27 +8,30 @@ class UserView
 
 
 
-    function renderEditEpi()
+    function renderEditEpi($id)
     {
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
+        $plantilla->assign('id', $id);
 
 
 
         $plantilla->display('templates/editEpi.tpl');
     }
 
-    function renderEditTemp()
+    function renderEditTemp($id)
     {
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
+        $plantilla->assign('id', $id);
 
         $plantilla->display('templates/editTemp.tpl');
     }
 
-    function renderError($logueado){
+    function renderError($logueado)
+    {
         $plantilla = new Smarty();
         $plantilla->assign('BASE_URL', BASE_URL);
         $plantilla->assign('logueado', $logueado);
