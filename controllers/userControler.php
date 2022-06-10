@@ -2,18 +2,21 @@
 require_once 'models/userModel.php';
 require_once 'views/userView.php';
 require_once 'helpers/sessionHelper.php';
+require_once 'models/seriesModel.php';
 
 class UserController
 {
     private $view;
     private $model;
     private $helper;
+    private $serieModel;
 
     function __construct()
     {
         $this->view = new UserView();
         $this->model = new UserModel();
         $this->helper = new SessionHelper();
+        $this->serieModel = new SeriesModel();
     }
 
 
@@ -77,7 +80,9 @@ class UserController
 
     function showEditEpi($id)
     {
-        $this->view->renderEditEpi($id);
+        $tempo = 'temporada';
+        $temp = $this->serieModel->getSerie($tempo);
+        $this->view->renderEditEpi($temp, $id);
     }
 
     function showEditTemp($id)

@@ -8,14 +8,13 @@ class UserView
 
 
 
-    function renderEditEpi($id)
+    function renderEditEpi($temporadas, $id)
     {
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
+        $plantilla->assign('temporadas', $temporadas);
         $plantilla->assign('id', $id);
-
-
 
         $plantilla->display('templates/editEpi.tpl');
     }
