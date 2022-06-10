@@ -15,4 +15,11 @@ class LoginView
 
         $plantilla->display('templates/login.tpl');
     }
+
+    function renderError(){
+        $plantilla = new Smarty();
+        $plantilla->assign('BASE_URL', BASE_URL);
+
+        $plantilla->display('templates/error.tpl');
+    }
 }

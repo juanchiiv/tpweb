@@ -27,4 +27,11 @@ class UserView
 
         $plantilla->display('templates/editTemp.tpl');
     }
+
+    function renderError($logueado){
+        $plantilla = new Smarty();
+        $plantilla->assign('BASE_URL', BASE_URL);
+        $plantilla->assign('logueado', $logueado);
+        $plantilla->display('templates/userError.tpl');
+    }
 }

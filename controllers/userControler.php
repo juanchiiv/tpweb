@@ -19,7 +19,12 @@ class UserController
 
 
     function agregarEpisod()
-    {
+    {   
+        if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada'])) {
+            $logueado= $this->helper->checkUser();
+            $this->view->renderError($logueado);
+            die();
+        }
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $audiencia = $_POST['audiencia'];
@@ -29,7 +34,12 @@ class UserController
     }
 
     function agregarTemp()
-    {
+    {   
+        if (empty($_POST['id_temporada']) || empty($_POST['nombre_temporada'])){
+            $logueado= $this->helper->checkUser();
+            $this->view->renderError($logueado);
+            die();
+        }
         $id_temporada = $_POST['id_temporada'];
         $nombre_temporada = $_POST['nombre_temporada'];
 
@@ -49,16 +59,23 @@ class UserController
     }
 
     function modificarEpisod($id)
-    {
+    {   
+        if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada'])) {
+            $logueado= $this->helper->checkUser();
+            $this->view->renderError($logueado);
+            die();
+        }
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $audiencia = $_POST['audiencia'];
         
         $this->model->modificarEpisod($id, $nombre, $descripcion, $audiencia);
+        
     }
 
     function showEditEpi(){
         $this->view->renderEditEpi();
+        
     }
 
     function showEditTemp(){
@@ -66,7 +83,12 @@ class UserController
     }
 
     function modificarTemp($id)
-    {
+    {   
+        if (empty($_POST['id_temporada']) || empty($_POST['nombre_temporada'])){
+            $logueado= $this->helper->checkUser();
+            $this->view->renderError($logueado);
+            die();
+        }
         $numero = $_POST['id_temporada'];
         $nombre = $_POST['nombre_temporda'];
         

@@ -29,7 +29,7 @@ class LoginController
     {
         if (empty($_POST['email']) || empty($_POST['password'])) {
 
-            echo "no llega";
+            $this->logView->renderError();
             die();
         }
 
@@ -43,7 +43,7 @@ class LoginController
             $logueado= $this->helper->checkUser();
             $this->view->renderHome($logueado);
         } else {
-            echo "Usuario o contraseña incorrecta";
+            $this->logView->renderError();
         }
     }
 

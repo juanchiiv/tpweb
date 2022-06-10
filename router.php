@@ -56,7 +56,7 @@ switch ($params[0]) {
         break;
     case 'borrarTemp':
         $userControler->borrarTemp($params[1]);
-        $seriesControler->showTemporadas();
+        $seriesControler->showTemporadas();        
         break;
     case 'modificarEpi':
         $userControler->showEditEpi();
@@ -66,7 +66,7 @@ switch ($params[0]) {
         break;
     case 'actualizarEpi':
         $userControler->modificarEpisod($params[1]);
-        $seriesControler->showEpisodios();
+        $seriesControler->showEpisodios();  
         break;
     case 'actualizarTemp':
         $userControler->modificarTemp($params[1]);
