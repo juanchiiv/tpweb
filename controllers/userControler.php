@@ -49,12 +49,14 @@ class UserController
     function borrarEpisod($id)
     {
         $this->model->borrarEpisod($id);
+        header('location:' . BASE_URL . 'episodios');
         
     }
 
     function borrarTemp($id)
     {
         $this->model->borrarTemp($id);
+        header('location:' . BASE_URL . 'temporadas');
         
     }
 
@@ -68,8 +70,10 @@ class UserController
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $audiencia = $_POST['audiencia'];
+        $temporada = $_POST['id_temporada_FK'];
         
-        $this->model->modificarEpisod($id, $nombre, $descripcion, $audiencia);
+        $this->model->modificarEpisod($id, $nombre, $descripcion, $audiencia, $temporada);
+        header('location:' . BASE_URL . 'episodios');
         
     }
 
@@ -80,6 +84,7 @@ class UserController
 
     function showEditTemp(){
         $this->view->renderEditTemp();
+       
     }
 
     function modificarTemp($id)
@@ -94,5 +99,6 @@ class UserController
         
         
         $this->model->modificarTemp($id, $numero, $nombre);
+        header('location:' . BASE_URL . 'temporadas');
     }
 }

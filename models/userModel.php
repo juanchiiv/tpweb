@@ -71,22 +71,22 @@ class UserModel
         $sentencia->execute([$id]);
     }
 
-    function modificarEpisod($id, $nombre, $descripcion, $audiencia)
+    function modificarEpisod($id, $nombre, $descripcion, $audiencia, $temporada)
     {
-        $sql = "UPDATE episodio SET nombre = $nombre,
+        $sql = "UPDATE episodios SET nombre = $nombre,
         descripcion = $descripcion,
-        audiencia = $audiencia
-        updated_at = NOW() WHERE id = ?";
+        audiencia = $audiencia,
+        id_temporada_fk = $temporada
+        WHERE id_episodios = ?";
 
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute([$id]);        
     }
 
-    function modificarTemp($id, $numero, $nombre)
+    function modificarTemp($id, $nombre)
     {
-        $sql = "UPDATE temporada SET id_temporada = $numero,
-        nombre_temporada = $nombre
-        updated_at = NOW() WHERE id = ?";
+        $sql = "UPDATE temporada SET nombre_temporada = $nombre
+        WHERE id_temporada = ?";
 
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute([$id]);        
