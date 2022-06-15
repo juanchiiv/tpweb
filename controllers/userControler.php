@@ -72,9 +72,10 @@ class UserController
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $audiencia = $_POST['audiencia'];
-        $temporada = $_POST['id_temporada_FK'];
+        $temporada = $_POST['temporada'];
 
         $this->model->modificarEpisod($id, $nombre, $descripcion, $audiencia, $temporada);
+        
         header('location:' . BASE_URL . 'episodios');
     }
 
@@ -99,9 +100,10 @@ class UserController
             die();
         }
         $id = $_POST['id_temporada'];
-        $nombre = $_POST['nombre_temporda'];
-
+        $nombre = $_POST['nombre_temporada'];
 
         $this->model->modificarTemp($id, $nombre);
+
+        header("location:" . BASE_URL . "temporadas");
     }
 }
