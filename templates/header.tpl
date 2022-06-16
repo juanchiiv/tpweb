@@ -9,12 +9,12 @@
 <body>
     <h1>AMERICAN HORROR STORY</h1>
     <ul>
-        <li><a href="episodios">Episodios</a></li>
-        <li><a href="temporadas">Temporadas</a></li>
+        <li><a href="{$BASE_URL}episodios">Episodios</a></li>
+        <li><a href="{$BASE_URL}temporadas">Temporadas</a></li>
        {if !$logueado } 
-             <li><a href="login">Login</a></li>
+             <li><a href="{$BASE_URL}login">Login</a></li>
         {else}
-            <li><a href="logout">Logout</a></li>
+            <li><a href="{$BASE_URL}logout">Logout</a></li>
       {/if}
        
     </ul>

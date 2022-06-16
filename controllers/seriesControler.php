@@ -45,5 +45,6 @@ class SeriesController
         $episodios = $this->episodModel->getSerieId($id);
         $logueado = $this->helper->checkUser();
         $this->view->renderEpiTemp($episodios, $logueado);
+    
     }
 }
