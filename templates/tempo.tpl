@@ -4,6 +4,7 @@
             <th>Nº Temporada</th>
             <th>Nombre</th>
             {if $logueado}   
+                <th>Ver</th>
                 <th>Modificar</th>
                 <th>Borrar</th>  
             {/if} 

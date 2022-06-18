@@ -37,4 +37,24 @@ class SeriesModel
 
         return $serie;
     }
+
+    function getTempId($id)
+    {
+        $sql = 'select * from temporada WHERE id_temporada= ? ';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
+        $temporada = $sentencia->fetch(PDO::FETCH_OBJ);
+
+        return $temporada;
+    }
+
+    function getEpId($id)
+    {
+        $sql = 'select * from episodios WHERE id_episodios= ? ';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
+        $episodio = $sentencia->fetch(PDO::FETCH_OBJ);
+
+        return $episodio;
+    }
 }

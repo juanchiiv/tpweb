@@ -83,13 +83,16 @@ class UserController
     {
         $tempo = 'temporada';
         $temp = $this->serieModel->getSerie($tempo);
-        $this->view->renderEditEpi($temp, $id);
+        $episodio = $this->serieModel->getEpId($id);
+        $logueado = $this->helper->checkUser();
+        $this->view->renderEditEpi($temp, $logueado, $episodio);
     }
 
     function showEditTemp($id)
-    {
-
-        $this->view->renderEditTemp($id);
+    {   
+        $temporada=$this->serieModel->getTempId($id);
+        $logueado = $this->helper->checkUser();
+        $this->view->renderEditTemp($temporada, $logueado);
     }
 
     function modificarTemp()
