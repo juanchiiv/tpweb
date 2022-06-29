@@ -1,0 +1,15 @@
+.portada {
+    height: 300px;
+    max-width: 100% ;
+    padding: 0%;
+    background-image: url(images/portada.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+h1 {
+    text-align: center;
+}
+p {
+    text-align: justify;
+}
