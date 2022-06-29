@@ -5,12 +5,11 @@ require_once 'helpers/sessionHelper.php';
 class UserView
 {
 
-    function renderBorrarTempError($temporadas, $logueado)
+    function renderBorrarTempError($logueado)
     {
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
-        $plantilla->assign('temporadas', $temporadas);
         $plantilla->assign('logueado', $logueado);
 
         $plantilla->display('templates/borrarTemp.tpl');

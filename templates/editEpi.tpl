@@ -18,4 +18,4 @@
         <button type="submit">Actualizar</button>
     </form>
 
-    {include file="footer.tpl"}
+{include file="footer.tpl"}

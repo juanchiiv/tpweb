@@ -60,8 +60,10 @@ class UserController
         if (!$this->serieModel->tieneCapitulos($id)) {
             $this->model->borrarTemp($id);
             header('location:' . BASE_URL . 'temporadas');
+        } else {
+            $logueado = $this->helper->checkUser();
+            $this->view->renderBorrarTempError($logueado);
         }
-        else{echo "Error, no podes borrar";} //TODO: cambiar echo
     }
 
     function modificarEpisod()
