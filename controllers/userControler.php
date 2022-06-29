@@ -57,8 +57,11 @@ class UserController
 
     function borrarTemp($id)
     {
-        $this->model->borrarTemp($id);
-        header('location:' . BASE_URL . 'temporadas');
+        if (!$this->serieModel->tieneCapitulos($id)) {
+            $this->model->borrarTemp($id);
+            header('location:' . BASE_URL . 'temporadas');
+        }
+        else{echo "Error, no podes borrar";} //TODO: cambiar echo
     }
 
     function modificarEpisod()
@@ -75,7 +78,7 @@ class UserController
         $temporada = $_POST['temporada'];
 
         $this->model->modificarEpisod($id, $nombre, $descripcion, $audiencia, $temporada);
-        
+
         header('location:' . BASE_URL . 'episodios');
     }
 
@@ -89,8 +92,8 @@ class UserController
     }
 
     function showEditTemp($id)
-    {   
-        $temporada=$this->serieModel->getTempId($id);
+    {
+        $temporada = $this->serieModel->getTempId($id);
         $logueado = $this->helper->checkUser();
         $this->view->renderEditTemp($temporada, $logueado);
     }

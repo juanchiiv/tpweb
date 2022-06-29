@@ -17,6 +17,14 @@ class SeriesModel
         $this->db  = new PDO("mysql:host=$host:$port;dbname=$dbname", $user, $pass);
     }
 
+    function tieneCapitulos($id_temporada){
+        $sql = 'SELECT COUNT(*) AS total FROM episodios e WHERE e.id_temporada_FK = ?';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id_temporada]);
+        $resultado = $sentencia->fetch(PDO::FETCH_OBJ);
+
+        return $resultado->total>0;
+    }
 
     function getSerie($pedido)
     {
