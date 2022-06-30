@@ -19,9 +19,12 @@
             <li><a href="{$BASE_URL}temporadas">Temporadas</a></li>
             {if !$logueado }
                 <li><a href="{$BASE_URL}login">Login</a></li>
-                <li><a href="{$BASE_URL}registro">Registrarse</a></li>
+                <li><a href="{$BASE_URL}registro">Registrarse</a></li>   
             {else}
                 <li><a href="{$BASE_URL}logout">Logout</a></li>
+                {if $rol == 'admin'}
+                    <li><a href="{$BASE_URL}usuarios">Usuarios</a></li>  
+                {/if}
             {/if}
     </nav>
     <h1>AMERICAN HORROR STORY</h1>

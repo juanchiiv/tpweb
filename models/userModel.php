@@ -97,6 +97,7 @@ class UserModel
         $query = $this->db->prepare('select COUNT(*) FROM login WHERE email = ?');
         $query->execute([$userEmail]);
         $cuenta = $query->fetch(PDO::FETCH_NUM);
+        
         return $cuenta;
     }
 
@@ -106,6 +107,14 @@ class UserModel
         VALUES (?, ?, ?, ?)';
 
         $sentencia = $this->db->prepare($sql);
-        $sentencia->execute([$nombre, $email, $email, $rol]);
+        $sentencia->execute([$nombre, $password, $email, $rol]);
+    }
+
+    function checkRol($email){
+        $sql= 'select rol from login where email=?';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$email]);
+        $rol = $sentencia->fetch(PDO::FETCH_OBJ);
+        return $rol;
     }
 }

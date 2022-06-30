@@ -25,7 +25,8 @@ class UserController
     {
         if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada'])) {
             $logueado = $this->helper->checkUser();
-            $this->view->renderError($logueado);
+            $mensaje = "Complete los campos";
+            $this->view->renderError($logueado, $mensaje);
             die();
         }
         $nombre = $_POST['nombre'];
@@ -40,7 +41,8 @@ class UserController
     {
         if (empty($_POST['id_temporada']) || empty($_POST['nombre_temporada'])) {
             $logueado = $this->helper->checkUser();
-            $this->view->renderError($logueado);
+            $mensaje = "Complete los campos";
+            $this->view->renderError($logueado, $mensaje);
             die();
         }
         $id_temporada = $_POST['id_temporada'];
@@ -70,7 +72,8 @@ class UserController
     {
         if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada'])) {
             $logueado = $this->helper->checkUser();
-            $this->view->renderError($logueado);
+            $mensaje = "Complete los campos";
+            $this->view->renderError($logueado, $mensaje);
             die();
         }
         $id = $_POST['id_episodios'];
@@ -104,7 +107,8 @@ class UserController
     {
         if (empty($_POST['id_temporada']) || empty($_POST['nombre_temporada'])) {
             $logueado = $this->helper->checkUser();
-            $this->view->renderError($logueado);
+            $mensaje = "Complete los campos";
+            $this->view->renderError($logueado, $mensaje);
             die();
         }
         $id = $_POST['id_temporada'];
@@ -114,5 +118,4 @@ class UserController
 
         header("location:" . BASE_URL . "temporadas");
     }
-    
 }

@@ -36,7 +36,7 @@ class SeriesView
 
         $plantilla->assign('BASE_URL', BASE_URL);
         $plantilla->assign('logueado', $logueado);
-
+        
 
         $plantilla->display('templates/home.tpl');
     }

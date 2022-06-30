@@ -35,7 +35,8 @@ class LoginController
     {
         if (empty($_POST['email']) || empty($_POST['password'])) {
             $logueado = $this->helper->checkUser();
-            $this->logView->renderError($logueado);
+            $mensaje = "Complete los campos";
+            $this->logView->renderError($logueado, $mensaje);
             die();
         }
 
@@ -47,10 +48,12 @@ class LoginController
         if ($user && password_verify($userPassword, ($user->password))) {
             $this->helper->iniciaSesion($user->nombre);
             $logueado = $this->helper->checkUser();
-            $this->view->renderHome($logueado);
+            $rol = $this->model->checkRol($user->email);
+            $this->view->renderHome($logueado, $rol);
         } else {
             $logueado = $this->helper->checkUser();
-            $this->logView->renderError($logueado);
+            $mensaje = "Usuario o contraseña invalidos";
+            $this->logView->renderError($logueado, $mensaje);
         }
     }
 
@@ -58,7 +61,8 @@ class LoginController
     {
         if (empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['password'])) {
             $logueado = $this->helper->checkUser();
-            $this->logView->renderError($logueado);
+            $mensaje = "Complete los campos";
+            $this->logView->renderError($logueado, $mensaje);
             die();
         }
         $nombre = $_POST['nombre'];
@@ -66,14 +70,20 @@ class LoginController
         $clave = $_POST['password'];
         $rol = 'usuario';
         $check = $this->model->getUserEmail($email);
-        if ($check >= 1) {
+        if ($check[0] > 0) {
             $logueado = $this->helper->checkUser();
-            $this->logView->renderError($logueado);
+            $mensaje = "El usuario ya existe";
+            $this->logView->renderError($logueado, $mensaje);
         } else {
             $userPassword = password_hash($clave, PASSWORD_BCRYPT);
             $this->model->registrar($nombre, $email, $rol, $userPassword);
+            $this->helper->iniciaSesion($nombre);
+            $logueado = $this->helper->checkUser();
+            $rol = $this->model->checkRol($email);
+            $this->view->renderHome($logueado, $rol);
         }
     }
+
 
     function logout()
     {
