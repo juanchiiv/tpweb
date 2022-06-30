@@ -1,28 +1,33 @@
 {include file="header.tpl"}
 <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Audiencia</th>
-            <th>Temporada</th>
-            {if $logueado}   
-                <th>Modificar</th>
-                <th>Borrar</th>  
-            {/if} 
-        </tr>
- {foreach $series item=serie}
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Audiencia</th>
+        <th>Temporada</th>
+        {if $logueado}
+            <th>Modificar</th>
+            <th>Borrar</th>
+        {/if}
+    </tr>
+    {foreach $series item=serie}
         <tr>
             <td>{$serie.nombre}</td>
             <td>{$serie.descripcion}</td>
             <td>{$serie.audiencia}</td>
-            <td>{$serie.id_temporada_FK}</td>
+            {foreach from=$temporadas item=temporada}
+                {if $temporada.id_temporada == $serie.id_temporada_FK}
+                    <td>{$temporada.nombre_temporada}</td>
+                {/if}
+            {/foreach}
+
             {if $logueado}
                 <td><a href="{$BASE_URL}modificarEpi/{$serie.id_episodios}">Modificar</a></td>
                 <td><a href="{$BASE_URL}borrarEpisod/{$serie.id_episodios}">Borrar</a></td>
             {/if}
         </tr>
-        {/foreach}
+    {/foreach}
     {if $logueado}
         {include file= "userEpisod.tpl"}
-    {/if}    
+    {/if}
 {include file="footer.tpl"}

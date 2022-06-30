@@ -23,11 +23,11 @@ class UserController
 
     function agregarEpisod()
     {
-        if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada'])) {
+        if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada']) || ($_POST['temporada']== "-- Seleccione --")) {
             $logueado = $this->helper->checkUser();
             $mensaje = "Complete los campos";
             $this->view->renderError($logueado, $mensaje);
-            die();
+            die(); 
         }
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
@@ -89,8 +89,7 @@ class UserController
 
     function showEditEpi($id)
     {
-        $tempo = 'temporada';
-        $temp = $this->serieModel->getSerie($tempo);
+        $temp = $this->serieModel->getTemporadas();
         $episodio = $this->serieModel->getEpId($id);
         $logueado = $this->helper->checkUser();
         $this->view->renderEditEpi($temp, $logueado, $episodio);

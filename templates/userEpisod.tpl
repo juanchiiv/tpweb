@@ -5,7 +5,7 @@
         <li><label>Descripcion<textarea type="text" name="descripcion"></textarea></label></li>
         <li><label>Audiencia<input type="text" name="audiencia"></label></li>
         <li> <label>Temporada
-                <select name="temporada">
+                <select name="temporada" required>
                     <option>-- Seleccione --</option>
                     {foreach from=$temporadas item=temporada}
                         <option value={$temporada.id_temporada}>{$temporada.nombre_temporada}</option>

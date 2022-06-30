@@ -26,9 +26,19 @@ class SeriesModel
         return $resultado->total>0;
     }
 
-    function getSerie($pedido)
+    function getEpisodios()
     {
-        $sql = 'select * from ' . $pedido . '';
+        $sql = 'select * from episodios';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute();
+        $serie = $sentencia->fetchAll(PDO::FETCH_NAMED);
+
+        return $serie;
+    }
+
+    function getTemporadas()
+    {
+        $sql = 'select * from temporada';
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute();
         $serie = $sentencia->fetchAll(PDO::FETCH_NAMED);

@@ -19,18 +19,15 @@ class SeriesController
 
     function showEpisodios()
     {
-        $episod = 'episodios';
-        $tempo = 'temporada';
-        $episodios = $this->episodModel->getSerie($episod);
-        $temp = $this->tempoModel->getSerie($tempo);
+        $episodios = $this->episodModel->getEpisodios();
+        $temp = $this->tempoModel->getTemporadas();
         $logueado = $this->helper->checkUser();
         $this->view->renderSeries($episodios, $logueado, $temp);
     }
 
     function showTemporadas()
     {
-        $tempo = 'temporada';
-        $temporadas = $this->tempoModel->getSerie($tempo);
+        $temporadas = $this->tempoModel->getTemporadas();
         $logueado = $this->helper->checkUser();
         $this->view->renderTempo($temporadas, $logueado);
     }
@@ -43,8 +40,9 @@ class SeriesController
     function showEpiTemp($id)
     {
         $episodios = $this->episodModel->getSerieId($id);
+        $temporadas = $this->tempoModel->getTemporadas();
         $logueado = $this->helper->checkUser();
-        $this->view->renderEpiTemp($episodios, $logueado);
+        $this->view->renderEpiTemp($episodios, $logueado, $temporadas);
     
     }
 }
