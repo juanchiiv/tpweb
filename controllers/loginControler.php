@@ -25,11 +25,17 @@ class LoginController
         $this->logView->renderLogin($logueado);
     }
 
+    function showRegistro()
+    {
+        $logueado = $this->helper->checkUser();
+        $this->logView->renderRegistro($logueado);
+    }
+
     function loguear()
     {
         if (empty($_POST['email']) || empty($_POST['password'])) {
-
-            $this->logView->renderError();
+            $logueado = $this->helper->checkUser();
+            $this->logView->renderError($logueado);
             die();
         }
 
@@ -43,7 +49,29 @@ class LoginController
             $logueado = $this->helper->checkUser();
             $this->view->renderHome($logueado);
         } else {
-            $this->logView->renderError();
+            $logueado = $this->helper->checkUser();
+            $this->logView->renderError($logueado);
+        }
+    }
+
+    function registrar()
+    {
+        if (empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['password'])) {
+            $logueado = $this->helper->checkUser();
+            $this->logView->renderError($logueado);
+            die();
+        }
+        $nombre = $_POST['nombre'];
+        $email = $_POST['email'];
+        $clave = $_POST['password'];
+        $rol = 'usuario';
+        $check = $this->model->getUserEmail($email);
+        if ($check >= 1) {
+            $logueado = $this->helper->checkUser();
+            $this->logView->renderError($logueado);
+        } else {
+            $userPassword = password_hash($clave, PASSWORD_BCRYPT);
+            $this->model->registrar($nombre, $email, $rol, $userPassword);
         }
     }
 

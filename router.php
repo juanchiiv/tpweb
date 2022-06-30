@@ -36,8 +36,14 @@ switch ($params[0]) {
     case 'login':
         $loginControler->showLogin();
         break;
+    case 'registro':
+        $loginControler->showRegistro();
+        break;
     case 'loguear':
         $loginControler->loguear();
+        break;
+    case 'registrar':
+        $loginControler->registrar();
         break;
     case 'logout':
         $loginControler->logout();

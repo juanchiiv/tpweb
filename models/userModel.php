@@ -91,4 +91,21 @@ class UserModel
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute([$nombre, $id]);
     }
+
+    function getUserEmail($userEmail)
+    {
+        $query = $this->db->prepare('select COUNT(*) FROM login WHERE email = ?');
+        $query->execute([$userEmail]);
+        $cuenta = $query->fetch(PDO::FETCH_NUM);
+        return $cuenta;
+    }
+
+    function registrar($nombre, $email, $rol, $password)
+    {
+        $sql = 'INSERT INTO login (nombre, password, email, rol) 
+        VALUES (?, ?, ?, ?)';
+
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$nombre, $email, $email, $rol]);
+    }
 }

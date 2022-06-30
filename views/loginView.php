@@ -16,10 +16,20 @@ class LoginView
         $plantilla->display('templates/login.tpl');
     }
 
-    function renderError()
+    function renderRegistro($logueado)
+    {
+        $plantilla = new Smarty();
+        $plantilla->assign('logueado', $logueado);
+        $plantilla->assign('BASE_URL', BASE_URL);
+
+        $plantilla->display('templates/registro.tpl');
+    }
+
+    function renderError($logueado)
     {
         $plantilla = new Smarty();
         $plantilla->assign('BASE_URL', BASE_URL);
+        $plantilla->assign('logueado', $logueado);
 
         $plantilla->display('templates/error.tpl');
     }

@@ -114,4 +114,5 @@ class UserController
 
         header("location:" . BASE_URL . "temporadas");
     }
+    
 }
