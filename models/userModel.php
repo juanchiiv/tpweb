@@ -101,6 +101,16 @@ class UserModel
         return $cuenta;
     }
 
+    function getComments($pedido)
+    {
+        $sql = 'select * from ' . $pedido . '';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute();
+        $comentarios = $sentencia->fetchAll(PDO::FETCH_NAMED);
+
+        return $comentarios;
+    }
+
     function registrar($nombre, $email, $rol, $password)
     {
         $sql = 'INSERT INTO login (nombre, password, email, rol) 
