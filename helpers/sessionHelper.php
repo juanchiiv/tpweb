@@ -10,13 +10,13 @@ class SessionHelper
         }
     }
 
-    function iniciaSesion($nombre)
+    function iniciaSesion($rol)
     {
         if (!$this->sessionVerify()) {
             session_start();
         }
         $_SESSION["logueado"] = true;
-        $_SESSION["username"] = $nombre;
+        $_SESSION["rol"] = $rol;
     }
 
     function sessionVerify()

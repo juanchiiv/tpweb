@@ -46,10 +46,9 @@ class LoginController
 
         //Si el usuario existe y las contraseñas coinciden
         if ($user && password_verify($userPassword, ($user->password))) {
-            $this->helper->iniciaSesion($user->nombre);
+            $this->helper->iniciaSesion($user->rol);
             $logueado = $this->helper->checkUser();
-            $rol = $this->model->checkRol($user->email);
-            $this->view->renderHome($logueado, $rol);
+            $this->view->renderHome($logueado, $user->rol);
         } else {
             $logueado = $this->helper->checkUser();
             $mensaje = "Usuario o contraseña invalidos";
@@ -79,7 +78,7 @@ class LoginController
             $this->model->registrar($nombre, $email, $rol, $userPassword);
             $this->helper->iniciaSesion($nombre);
             $logueado = $this->helper->checkUser();
-            $rol = $this->model->checkRol($email);
+            $rol = $_SESSION['rol'];
             $this->view->renderHome($logueado, $rol);
         }
     }
