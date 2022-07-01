@@ -77,6 +77,15 @@ switch ($params[0]) {
     case 'verTemp':
         $seriesControler->showEpiTemp($params[1]);
         break;
+    case 'usuarios':
+        $userControler->getUsuarios();
+        break;
+    case 'cambiarRol':
+        $userControler->cambiarRol($params[1]);
+        break;
+    case 'eliminarUsuario':
+        $userControler->eliminarUsuario($params[1]);
+        break;
     default:
         echo ('404 Page not found');
         break;

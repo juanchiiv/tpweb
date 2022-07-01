@@ -23,11 +23,11 @@ class UserController
 
     function agregarEpisod()
     {
-        if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada']) || ($_POST['temporada']== "-- Seleccione --")) {
+        if (empty($_POST['nombre']) || empty($_POST['descripcion']) || empty($_POST['audiencia']) || empty($_POST['temporada']) || ($_POST['temporada'] == "-- Seleccione --")) {
             $logueado = $this->helper->checkUser();
             $mensaje = "Complete los campos";
             $this->view->renderError($logueado, $mensaje);
-            die(); 
+            die();
         }
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
@@ -116,5 +116,35 @@ class UserController
         $this->model->modificarTemp($id, $nombre);
 
         header("location:" . BASE_URL . "temporadas");
+    }
+
+    function getUsuarios()
+    {
+        $usuarios = $this->model->getUsuarios();
+        $logueado = $this->helper->checkUser();
+        $rol = $_SESSION['rol'];
+        $this->view->renderUsuarios($usuarios, $logueado, $rol);
+    }
+
+    function cambiarRol($id)
+    {
+        $rol = $this->model->checkRol($id);
+
+        if ($rol->rol == 'usuario') {
+            $newRol = 'admin';
+        } else {
+            $newRol = 'usuario';
+        }
+
+        $this->model->cambiarRol($id, $newRol);
+
+        header("location:" . BASE_URL . "usuarios");
+    }
+
+    function eliminarUsuario($id)
+    {
+        $this->model->eliminarUsuario($id);
+
+        header("location:" . BASE_URL . "usuarios");
     }
 }

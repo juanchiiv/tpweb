@@ -47,4 +47,14 @@ class UserView
         $plantilla->assign('mensaje', $mensaje);
         $plantilla->display('templates/userError.tpl');
     }
+
+    function renderUsuarios($usuarios, $logueado, $rol)
+    {
+        $plantilla = new Smarty();
+        $plantilla->assign('BASE_URL', BASE_URL);
+        $plantilla->assign('logueado', $logueado);
+        $plantilla->assign('usuarios', $usuarios);
+        $plantilla->assign('rol', $rol);
+        $plantilla->display('templates/usuarios.tpl');
+    }
 }

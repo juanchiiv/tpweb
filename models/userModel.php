@@ -55,14 +55,7 @@ class UserModel
         $sentencia->execute([$id_temporada, $nombre_temporada]);
     }
 
-    function guardarComentario($comentario, $puntuacion)
-    {
-        $query = $this->db->prepare('INSERT INTO comentarios(comentario, puntuacion) VALUES(?,0)');
-        $query->execute([$comentario, $puntuacion]);
-        $query->execute([$comentario, $puntuacion]);
 
-        return $this->db->lastInsertId();
-    }
 
     function borrarEpisod($id)
     {
@@ -80,13 +73,7 @@ class UserModel
         $sentencia->execute([$id]);
     }
 
-    function borrarComentario($id)
-    {
-        $sql = "DELETE FROM comentarios WHERE id_episodio = ?";
 
-        $sentencia = $this->db->prepare($sql);
-        $sentencia->execute([$id]);
-    }
 
     function modificarEpisod($id, $nombre, $descripcion, $audiencia, $temporada)
     {
@@ -109,12 +96,6 @@ class UserModel
         $sentencia->execute([$nombre, $id]);
     }
 
-    function modificarComentario($id_comentario, $comentario, $puntuacion) {
-        $query = $this->db->prepare('UPDATE comentario SET comentario = ? SET puntuacion = 0 WHERE id_comentario = ?');
-        $query->execute([$comentario, $puntuacion, $id_comentario]);
-    }
-
-
     function getUserEmail($userEmail)
     {
         $query = $this->db->prepare('select COUNT(*) FROM login WHERE email = ?');
@@ -122,16 +103,6 @@ class UserModel
         $cuenta = $query->fetch(PDO::FETCH_NUM);
 
         return $cuenta;
-    }
-
-    function getComments($pedido)
-    {
-        $sql = 'select * from ' . $pedido . '';
-        $sentencia = $this->db->prepare($sql);
-        $sentencia->execute();
-        $comentarios = $sentencia->fetchAll(PDO::FETCH_NAMED);
-
-        return $comentarios;
     }
 
     function registrar($nombre, $email, $rol, $password)
@@ -143,12 +114,38 @@ class UserModel
         $sentencia->execute([$nombre, $password, $email, $rol]);
     }
 
-    function checkRol($email)
+    function checkRol($id)
     {
-        $sql = 'select rol from login where email=?';
+        $sql = 'select rol from login where id_usuario=?';
         $sentencia = $this->db->prepare($sql);
-        $sentencia->execute([$email]);
+        $sentencia->execute([$id]);
         $rol = $sentencia->fetch(PDO::FETCH_OBJ);
         return $rol;
+    }
+
+    function getUsuarios()
+    {
+        $sql = 'select * from login';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([]);
+        $usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $usuarios;
+    }
+
+    function cambiarRol($id, $rol)
+    {
+        $sql = "UPDATE login SET rol = ?
+        WHERE id_usuario = ?";
+
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$rol, $id]);
+    }
+
+    function eliminarUsuario($id)
+    {
+        $sql = "DELETE FROM login WHERE id_usuario = ?";
+
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
     }
 }

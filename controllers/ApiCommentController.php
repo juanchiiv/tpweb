@@ -1,6 +1,7 @@
 <?php
-require_once 'models/userModel.php';
+
 require_once 'views/ApiView';
+require_once 'models/comentModel.php';
 
 class ApiCommentController extends ApiController
 {
@@ -9,7 +10,7 @@ class ApiCommentController extends ApiController
     public function __construct()
     {
         parent::__construct();
-        $this->model = new userModel();
+        $this->model = new ComentModel();
         $this->view = new APIView();
     }
 
@@ -27,14 +28,15 @@ class ApiCommentController extends ApiController
         }
     }
 
-    public function agregarComentario($params = []) {
+    public function agregarComentario($params = [])
+    {
         // devuelve el objeto JSON enviado por POST     
-         $body = $this->getData();
- 
-         // inserta el comentario
-         $comentario = $body->comentario;
-         $puntuacion = $body->puntuacion;
-         $comentario = $this->model->guardarComentario($comentario, $puntuacion);
+        $body = $this->getData();
+
+        // inserta el comentario
+        $comentario = $body->comentario;
+        $puntuacion = $body->puntuacion;
+        $comentario = $this->model->guardarComentario($comentario, $puntuacion);
     }
 
     public function borrarComentario($params = [])
@@ -49,7 +51,8 @@ class ApiCommentController extends ApiController
             $this->view->response("comentario id=$comentario_id not found", 404);
     }
 
-    public function modificarComentario($params = []) {
+    public function modificarComentario($params = [])
+    {
         $comentario_id = $params[':ID'];
         $comentario = $this->model->getComments($comentario_id);
 
@@ -59,8 +62,7 @@ class ApiCommentController extends ApiController
             $puntuacion = $body->puntuacion;
             $comentario = $this->model->modificarComentario($comentario_id, $comentario, $puntuacion);
             $this->view->response("comentario id=$comentario_id actualizada con éxito", 200);
-        }
-        else 
+        } else
             $this->view->response("comentario id=$comentario_id not found", 404);
     }
 }
