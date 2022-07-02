@@ -43,19 +43,17 @@ class UserModel
         $sentencia->execute([$nombre, $descripcion, $audiencia, $temporada]);
     }
 
-    function agregaTemp($id_temporada, $nombre_temporada)
+    function agregaTemp($nombre_temporada)
     {
 
-        $sql = 'INSERT INTO temporada (id_temporada, nombre_temporada) 
-                VALUES (?, ?)';
+        $sql = 'INSERT INTO temporada (nombre_temporada) 
+                VALUES ( ?)';
 
 
 
         $sentencia = $this->db->prepare($sql);
-        $sentencia->execute([$id_temporada, $nombre_temporada]);
+        $sentencia->execute([$nombre_temporada]);
     }
-
-
 
     function borrarEpisod($id)
     {

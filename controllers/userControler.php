@@ -39,16 +39,15 @@ class UserController
 
     function agregarTemp()
     {
-        if (empty($_POST['id_temporada']) || empty($_POST['nombre_temporada'])) {
+        if (empty($_POST['nombre_temporada'])) {
             $logueado = $this->helper->checkUser();
             $mensaje = "Complete los campos";
             $this->view->renderError($logueado, $mensaje);
             die();
         }
-        $id_temporada = $_POST['id_temporada'];
-        $nombre_temporada = $_POST['nombre_temporada'];
 
-        $this->model->agregaTemp($id_temporada, $nombre_temporada);
+        $nombre_temporada = $_POST['nombre_temporada'];
+        $this->model->agregaTemp($nombre_temporada);
     }
 
     function borrarEpisod($id)
