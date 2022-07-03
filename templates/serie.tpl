@@ -9,6 +9,7 @@
             <th>Modificar</th>
             <th>Borrar</th>
         {/if}
+        <th>Comentarios</th>
     </tr>
     {foreach $series item=serie}
         <tr>
@@ -25,9 +26,11 @@
                 <td><a href="{$BASE_URL}modificarEpi/{$serie.id_episodios}">Modificar</a></td>
                 <td><a href="{$BASE_URL}borrarEpisod/{$serie.id_episodios}">Borrar</a></td>
             {/if}
+            <td><a href="{$BASE_URL}api/comentarios">Comentarios</a></td>
         </tr>
     {/foreach}
     {if $logueado}
         {include file= "userEpisod.tpl"}
     {/if}
+
 {include file="footer.tpl"}
