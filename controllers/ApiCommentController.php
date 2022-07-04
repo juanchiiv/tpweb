@@ -14,14 +14,13 @@ class ApiCommentController extends ApiController
         $this->view = new APIView();
     }
 
-    function get($params = [])
+    function getComents($params = [])
     {
         if (empty($params)) {
-            $comments = 'comentarios';
-            $comentarios = $this->model->getComments($comments);
+            $comentarios = $this->model->getComents();
             return $this->view->response($comentarios, 200);
         } else {
-            $comentario = $this->model->getComments($params[":ID"]);
+            $comentario = $this->model->getComents($params[":ID"]);
             if (!empty($comentario)) {
                 return $this->view->response($comentario, 200);
             }
@@ -42,7 +41,7 @@ class ApiCommentController extends ApiController
     public function borrarComentario($params = [])
     {
         $comentario_id = $params[':ID'];
-        $comentario = $this->model->getComments($comentario_id);
+        $comentario = $this->model->getComents($comentario_id);
 
         if ($comentario) {
             $this->model->borrarComentario($comentario_id);
@@ -54,7 +53,7 @@ class ApiCommentController extends ApiController
     public function modificarComentario($params = [])
     {
         $comentario_id = $params[':ID'];
-        $comentario = $this->model->getComments($comentario_id);
+        $comentario = $this->model->getComents($comentario_id);
 
         if ($comentario) {
             $body = $this->getData();

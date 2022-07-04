@@ -37,12 +37,12 @@ class ComentModel
         $sentencia->execute([$id]);
     }
 
-    function getComments($pedido)
+    function getComents()
     {
-        $sql = 'select * from ' . $pedido . '';
+        $sql = 'select * from comentarios';
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute();
-        $comentarios = $sentencia->fetchAll(PDO::FETCH_NAMED);
+        $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
         return $comentarios;
     }

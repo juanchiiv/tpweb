@@ -1,7 +1,7 @@
 {include file="serie.tpl"}
 
 
-{{literal}
+{*{literal}
     <section id="template-vue-coments">
     <h3> {{ subtitle }} </h3>
     <table>
@@ -15,5 +15,6 @@
         </tr>
     </table>
     </section>
+   <script src="js/coments.js"></script>
 {/literal}}
 

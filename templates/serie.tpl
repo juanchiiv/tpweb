@@ -26,11 +26,30 @@
                 <td><a href="{$BASE_URL}modificarEpi/{$serie.id_episodios}">Modificar</a></td>
                 <td><a href="{$BASE_URL}borrarEpisod/{$serie.id_episodios}">Borrar</a></td>
             {/if}
-            <td><a href="{$BASE_URL}api/comentarios">Comentarios</a></td>
+            <td><a :data-id= "{$serie.id_episodios}" href="#" class="btn-comentarios">Comentarios</a></td>
         </tr>
     {/foreach}
     {if $logueado}
         {include file= "userEpisod.tpl"}
     {/if}
+
+    {literal}
+    <div id="coments">
+        <section id="template-vue-coments">
+        <h3> {{ subtitle }} </h3>
+        <table>
+            <tr>
+            <th>Usuario</th>
+            <th>Comentario</th>
+            <th>Puntuacion</th>
+            </tr>
+            <tr>
+                <td v-for= "comentario in comentarios"></td>
+            </tr>
+        </table>
+        </section>
+        </div>
+       <script src="js/coments.js"></script>
+    {/literal}
 
 {include file="footer.tpl"}
