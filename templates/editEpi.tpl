@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 <h2>Editar episodio</h2>
-<form action="{$BASE_URL}actualizarEpi" method="post">
+<form action="actualizarEpi" method="post">
     <input type="hidden" name="id_episodios" value="{$episodio->id_episodios}">
     <label>Nombre <input type="text" name="nombre" value="{$episodio->nombre}"></label>
     <label>Descripcion<input type="text" name="descripcion" value="{$episodio->descripcion}"></label>

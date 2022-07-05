@@ -15,8 +15,8 @@
             <td>{$usuario->nombre}</td>
             <td>{$usuario->email}</td>
             <td>{$usuario->rol}</td>
-            <td><a href="{$BASE_URL}cambiarRol/{$usuario->id_usuario}">Cambiar rol</a></td>
-            <td><a href="{$BASE_URL}eliminarUsuario/{$usuario->id_usuario}">Eliminar</a></td>
+            <td><a href="cambiarRol/{$usuario->id_usuario}">Cambiar rol</a></td>
+            <td><a href="eliminarUsuario/{$usuario->id_usuario}">Eliminar</a></td>
         </tr>
     {/foreach}
 

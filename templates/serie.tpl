@@ -23,8 +23,8 @@
             {/foreach}
 
             {if $logueado}
-                <td><a href="{$BASE_URL}modificarEpi/{$serie.id_episodios}">Modificar</a></td>
-                <td><a href="{$BASE_URL}borrarEpisod/{$serie.id_episodios}">Borrar</a></td>
+                <td><a href="modificarEpi/{$serie.id_episodios}">Modificar</a></td>
+                <td><a href="borrarEpisod/{$serie.id_episodios}">Borrar</a></td>
             {/if}
             <td><a :data-id= "{$serie.id_episodios}" href="#" class="btn-comentarios">Comentarios</a></td>
         </tr>

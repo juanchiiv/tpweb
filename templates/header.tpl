@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <base href="{$BASE_URL}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,15 +16,15 @@
     </div>
     <nav>
         <ul>
-            <li><a href="{$BASE_URL}episodios">Episodios</a></li>
-            <li><a href="{$BASE_URL}temporadas">Temporadas</a></li>
+            <li><a href="episodios">Episodios</a></li>
+            <li><a href="temporadas">Temporadas</a></li>
             {if !$logueado }
-                <li><a href="{$BASE_URL}login">Login</a></li>
-                <li><a href="{$BASE_URL}registro">Registrarse</a></li>   
+                <li><a href="login">Login</a></li>
+                <li><a href="registro">Registrarse</a></li>   
             {else}
-                <li><a href="{$BASE_URL}logout">Logout</a></li>
+                <li><a href="logout">Logout</a></li>
                 {if $rol == 'admin'}
-                    <li><a href="{$BASE_URL}usuarios">Usuarios</a></li>  
+                    <li><a href="usuarios">Usuarios</a></li>  
                 {/if}
             {/if}
     </nav>

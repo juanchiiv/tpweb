@@ -33,7 +33,7 @@ async function agregarComent(id){
     let data = {
         id_episodio : id,
         id_usuario : id_user,
-        comentario : document.querySelector(".comentario").Value,
+        comentario : document.querySelector(".comentario").value,
         pntuacion : document.querySelector("input[name='puntuacion':checked]").value,
   
     }
