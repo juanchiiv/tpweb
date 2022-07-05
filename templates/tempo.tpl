@@ -13,7 +13,7 @@
         <tr>
             <td>{$serie.id_temporada}</td>
             <td>{$serie.nombre_temporada}</td>
-            <td><a href="temporada/verTemp/{$serie.id_temporada}">Ver</a></td>
+            <td><a href="verTemp/{$serie.id_temporada}">Ver</a></td>
             {if $logueado}
                 <td><a href="modificarTemp/{$serie.id_temporada}">Modificar</a></td>
                 <td><a href="borrarTemp/{$serie.id_temporada}">Borrar</a></td>
