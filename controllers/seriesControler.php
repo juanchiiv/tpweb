@@ -22,7 +22,7 @@ class SeriesController
         $episodios = $this->episodModel->getEpisodios();
         $temp = $this->tempoModel->getTemporadas();
         $logueado = $this->helper->checkUser();
-        $rol = $_SESSION['rol'];
+        $rol = $this->helper->getRol();
         $this->view->renderSeries($episodios, $logueado, $temp, $rol);
     }
 
@@ -30,13 +30,13 @@ class SeriesController
     {
         $temporadas = $this->tempoModel->getTemporadas();
         $logueado = $this->helper->checkUser();
-        $rol = $_SESSION['rol'];
+        $rol = $this->helper->getRol();
         $this->view->renderTempo($temporadas, $logueado, $rol);
     }
     function showHome()
     {
         $logueado = $this->helper->checkUser();
-        $rol = $_SESSION['rol'];
+        $rol = $this->helper->getRol();
         $this->view->renderHome($logueado, $rol);
     }
 
@@ -45,7 +45,7 @@ class SeriesController
         $episodios = $this->episodModel->getSerieId($id);
         $temporadas = $this->tempoModel->getTemporadas();
         $logueado = $this->helper->checkUser();
-        $rol = $_SESSION['rol'];
+        $rol = $this->helper->getRol();
         $this->view->renderEpiTemp($episodios, $logueado, $temporadas, $rol);
     
     }

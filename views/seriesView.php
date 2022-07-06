@@ -6,7 +6,7 @@ class SeriesView
 {
 
 
-    function renderSeries($series, $logueado, $temporadas, $rol)
+    function renderSeries($series, $logueado, $temporadas, $rol = null)
     {
         $plantilla = new Smarty();
 
@@ -19,7 +19,7 @@ class SeriesView
         $plantilla->display('templates/serie.tpl');
     }
 
-    function renderTempo($series, $logueado, $rol)
+    function renderTempo($series, $logueado, $rol = null)
     {
         $plantilla = new Smarty();
 
@@ -32,7 +32,7 @@ class SeriesView
         $plantilla->display('templates/tempo.tpl');
     }
 
-    function renderHome($logueado, $rol)
+    function renderHome($logueado, $rol = null)
     {
         $plantilla = new Smarty();
 
@@ -43,7 +43,7 @@ class SeriesView
         $plantilla->display('templates/home.tpl');
     }
 
-    function renderEpiTemp($series, $logueado, $temporadas, $rol)
+    function renderEpiTemp($series, $logueado, $temporadas, $rol = null)
     {
         $plantilla = new Smarty();
 

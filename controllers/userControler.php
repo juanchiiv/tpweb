@@ -121,7 +121,7 @@ class UserController
     {
         $usuarios = $this->model->getUsuarios();
         $logueado = $this->helper->checkUser();
-        $rol = $_SESSION['rol'];
+        $rol = $this->helper->getRol();
         $this->view->renderUsuarios($usuarios, $logueado, $rol);
     }
 

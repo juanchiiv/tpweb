@@ -19,6 +19,16 @@ class SessionHelper
         $_SESSION["rol"] = $rol;
     }
 
+    function getRol()
+    {
+        if(!$this->sessionVerify()){
+            session_start();
+        }
+        if(isset ($_SESSION["rol"]))
+        return $_SESSION["rol"];
+        else{return null;}
+    }
+
     function sessionVerify()
     {
         if (session_status() == PHP_SESSION_ACTIVE) {

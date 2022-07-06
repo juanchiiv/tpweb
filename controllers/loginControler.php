@@ -78,7 +78,7 @@ class LoginController
             $this->model->registrar($nombre, $email, $rol, $userPassword);
             $this->helper->iniciaSesion($nombre);
             $logueado = $this->helper->checkUser();
-            $rol = $_SESSION['rol'];
+            $$rol = $this->helper->getRol();
             $this->view->renderHome($logueado, $rol);
         }
     }
