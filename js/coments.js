@@ -3,14 +3,21 @@
 let app = new Vue({
     el: "#template-vue-coments",
     data: {
-        subtitle: "Comentarios",
         coments: []
-    }
+     
+    },
+    methods: {
+
+        eliminar: function(id){ 
+            borrarComent(id);
+        }
+    },
 });
+
 
 document.querySelector(".btn-comentarios").addEventListener('click', getComents);
 
-async function getComents(id) {
+async function getComents(event) {
     event.preventDefault();
 
     let body = document.getElementById("coments");
@@ -25,24 +32,12 @@ async function getComents(id) {
     }
 }
 
-document.querySelector("#form-coment").addEventListener('submit', agregarComent);
 
-async function agregarComent(id) {
-    event.preventDefault();
-
-    let data = {
-        id_episodio: id,
-        id_usuario: id_user,
-        comentario: document.querySelector(".comentario").value,
-        pntuacion: document.querySelector("input[name='puntuacion':checked]").value,
-
-    }
-
+async function borrarComent(id) {
+   
     try {
-        let res = await fetch("api/comentarios", {
-            "method": "POST",
-            "headers": { "Content-type": "application/json" },
-            "body": JSON.stringify(data)
+        let res = await fetch("api/comentarios/" + id, {
+            "method": "DELETE"
         });
         if (res.status === 200) {
             getComents();
@@ -52,12 +47,41 @@ async function agregarComent(id) {
     }
 }
 
-document.querySelector(".btn-eliminar").addEventListener('click', borrarComent);
+let addComent = new Vue({
+    el: "#form-coment",
+    data: {
+      form: {
+        puntuacion: null,
+        comentario: "",
+      },
+    },
+    methods: {
 
-async function borrarComent(id) {
+      save() {
+        this.form.comentario = this.$refs["coment"].value;
+        let coment = this.form.comentario;
+        let puntuacion = this.form.puntuacion;
+        agregarComent(puntuacion, coment);
+      },
+    },
+  });
+
+  async function agregarComent(puntuacion, coment) {
+    
+
+    let data = {
+        id_episodio: id,
+        id_usuario: id_user,
+        comentario: coment,
+        puntuacion: puntuacion
+
+    }
+
     try {
-        let res = await fetch("api/comentarios/" + id, {
-            "method": "DELETE"
+        let res = await fetch("api/comentarios", {
+            "method": "POST",
+            "headers": { "Content-type": "application/json" },
+            "body": JSON.stringify(data)
         });
         if (res.status === 200) {
             getComents();
