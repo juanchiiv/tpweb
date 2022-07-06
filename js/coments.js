@@ -4,16 +4,16 @@ let app = new Vue({
     el: "#template-vue-coments",
     data: {
         subtitle: "Comentarios",
-        coments: [] 
+        coments: []
     }
 });
 
 document.querySelector(".btn-comentarios").addEventListener('click', getComents);
 
-async function getComents(id){
+async function getComents(id) {
     event.preventDefault();
 
-    let body= document.getElementById("coments");
+    let body = document.getElementById("coments");
     body.innerHTML = 'Loading..';
 
     try {
@@ -27,24 +27,24 @@ async function getComents(id){
 
 document.querySelector("#form-coment").addEventListener('submit', agregarComent);
 
-async function agregarComent(id){
+async function agregarComent(id) {
     event.preventDefault();
 
     let data = {
-        id_episodio : id,
-        id_usuario : id_user,
-        comentario : document.querySelector(".comentario").value,
-        pntuacion : document.querySelector("input[name='puntuacion':checked]").value,
-  
+        id_episodio: id,
+        id_usuario: id_user,
+        comentario: document.querySelector(".comentario").value,
+        pntuacion: document.querySelector("input[name='puntuacion':checked]").value,
+
     }
 
     try {
         let res = await fetch("api/comentarios", {
             "method": "POST",
-            "headers": {"Content-type": "application/json" },
+            "headers": { "Content-type": "application/json" },
             "body": JSON.stringify(data)
         });
-        if (res.status === 201){
+        if (res.status === 200) {
             getComents();
         }
     } catch (error) {
@@ -54,12 +54,12 @@ async function agregarComent(id){
 
 document.querySelector(".btn-eliminar").addEventListener('click', borrarComent);
 
-async function borrarComent(id){
+async function borrarComent(id) {
     try {
         let res = await fetch("api/comentarios/" + id, {
             "method": "DELETE"
         });
-        if (res.status === 200){
+        if (res.status === 200) {
             getComents();
         }
     } catch (error) {
