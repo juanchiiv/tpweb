@@ -33,48 +33,4 @@
         {include file= "userEpisod.tpl"}
     {/if}
 
-    {literal}
-        <div id="coments">
-            <section id="template-vue-coments">
-                <h3> Comentarios </h3>
-                <table>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Comentario</th>
-                        <th>Puntuacion</th>
-                    </tr>
-                    <tr>
-                        <td v-for="comentario in comentarios"></td>
-                        <strike>{{ comentario.id_usuario }} - {{ comentario.comentario }} - {{ comentario.puntuacion }}
-                        </strike>
-                        <span v-if="rol== admin"></span>
-                        <a :data-id="comentario.id" class="btn-eliminar" v-on="click" href="#">Eliminar</a>
-                    </tr>
-                </table>
-            </section>
-        </div>
-        <span v-if="logueado== true"><strike>
-                <form id="form-coment" action="#" method="post">
-                    <ul>
-                        <li><input type="hidden" name="id_episodio" value=""></li>
-                        <li><input type="hidden" name="id_usuario" value=""></li>
-                        <li><label>Comentario<textarea type="text" ref="coment"></textarea></label></li>
-                        <li> <label>Valoracion
-                                <select required>
-                                    <option>-- Seleccione --</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </label></li>
-                        <li> <button type="submit" @click="save">Agregar comentario</button></li>
-                    </ul>
-                </form>
-            </strike></span>
-
-    {/literal}
-
-    <script src="js/coments.js"></script>
 {include file="footer.tpl"}

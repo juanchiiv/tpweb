@@ -23,11 +23,14 @@ class ApiCommentController extends ApiController
             $comentario = $this->model->getComents($params[":ID"]);
             if (!empty($comentario)) {
                 return $this->view->response($comentario, 200);
+            }else {
+                $error = "No hay comentarios";
+                return $this->view->response($error, 404);
             }
         }
     }
 
-    public function agregarComentario($params = [])
+    function agregarComentario($params = [])
     {
         // devuelve el objeto JSON enviado por POST     
         $body = $this->getData();
@@ -35,10 +38,12 @@ class ApiCommentController extends ApiController
         // inserta el comentario
         $comentario = $body->comentario;
         $puntuacion = $body->puntuacion;
-        $comentario = $this->model->guardarComentario($comentario, $puntuacion);
+        $idUser = $body->id_usuario;
+        $idEpi = $body->i_episodio;
+        $comentario = $this->model->guardarComentario($comentario, $puntuacion, $idUser, $idEpi);
     }
 
-    public function borrarComentario($params = [])
+    function borrarComentario($params = [])
     {
         $comentario_id = $params[':ID'];
         $comentario = $this->model->getComents($comentario_id);
@@ -50,18 +55,4 @@ class ApiCommentController extends ApiController
             $this->view->response("comentario id=$comentario_id not found", 404);
     }
 
-    public function modificarComentario($params = [])
-    {
-        $comentario_id = $params[':ID'];
-        $comentario = $this->model->getComents($comentario_id);
-
-        if ($comentario) {
-            $body = $this->getData();
-            $comentario = $body->comentario;
-            $puntuacion = $body->puntuacion;
-            $comentario = $this->model->modificarComentario($comentario_id, $comentario, $puntuacion);
-            $this->view->response("comentario id=$comentario_id actualizada con éxito", 200);
-        } else
-            $this->view->response("comentario id=$comentario_id not found", 404);
-    }
 }

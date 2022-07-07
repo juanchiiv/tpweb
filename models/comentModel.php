@@ -20,13 +20,11 @@ class ComentModel
         $this->helper = new SessionHelper();
     }
 
-    function guardarComentario($comentario, $puntuacion)
+    function guardarComentario($comentario, $puntuacion, $idUser, $ideEpi)
     {
-        $query = $this->db->prepare('INSERT INTO comentarios(comentario, puntuacion) VALUES(?,0)');
-        $query->execute([$comentario, $puntuacion]);
-        $query->execute([$comentario, $puntuacion]);
-
-        return $this->db->lastInsertId();
+        $query = $this->db->prepare('INSERT INTO comentarios(comentario, puntuacion , id_usuario, id_episodio) VALUES(?, ?)');
+        $query->execute([$comentario, $puntuacion, $idUser, $ideEpi]);
+       
     }
 
     function borrarComentario($id)
@@ -37,18 +35,14 @@ class ComentModel
         $sentencia->execute([$id]);
     }
 
-    function getComents()
+    function getComents($id = null)
     {
-        $sql = 'select * from comentarios';
+        $sql = 'select * from comentarios WHERE id_episodio = ?';
         $sentencia = $this->db->prepare($sql);
-        $sentencia->execute();
+        $sentencia->execute([$id]);
         $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
         return $comentarios;
     }
 
-    function modificarComentario($id_comentario, $comentario, $puntuacion) {
-        $query = $this->db->prepare('UPDATE comentario SET comentario = ? SET puntuacion = 0 WHERE id_comentario = ?');
-        $query->execute([$comentario, $puntuacion, $id_comentario]);
-    }
 }

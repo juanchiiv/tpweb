@@ -1,17 +1,21 @@
-<h2>Comentarios</h2>
+{{literal}
+<h3>{{ subtitle }}</h3>
 <form id="form-coment" action="#" method="post">
     <ul>
-        <li><label>Comentario<textarea type="text" name="comentarios"></textarea></label></li>
+        <li><input type="hidden" name="id_episodio" value=""></li>
+        <li><input type="hidden" name="id_usuario" value=""></li>
+        <li><label>Comentario<textarea type="text" ref="coment"></textarea></label></li>
         <li> <label>Valoracion
                 <select required>
-                    <option>-- Seleccione --</option>  
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option>-- Seleccione --</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
                 </select>
             </label></li>
-        <li> <button type="submit">Agregar comentario</button></li>
+        <li> <button type="submit" @click="save">Agregar comentario</button></li>
     </ul>
 </form>
+{/literal}}
