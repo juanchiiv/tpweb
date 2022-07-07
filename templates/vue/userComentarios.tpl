@@ -1,9 +1,9 @@
-{{literal}
+{literal}
 <h3>{{ subtitle }}</h3>
 <form id="form-coment" action="#" method="post">
     <ul>
-        <li><input type="hidden" name="id_episodio" value=""></li>
-        <li><input type="hidden" name="id_usuario" value=""></li>
+        <input type="hidden" name="id_episodio" value="">
+        <input type="hidden" name="id_usuario" value="">
         <li><label>Comentario<textarea type="text" ref="coment"></textarea></label></li>
         <li> <label>Valoracion
                 <select required>
@@ -18,4 +18,4 @@
         <li> <button type="submit" @click="save">Agregar comentario</button></li>
     </ul>
 </form>
-{/literal}}
+{/literal}

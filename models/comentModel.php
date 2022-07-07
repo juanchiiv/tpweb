@@ -1,28 +1,29 @@
 <?php
-require_once 'helpers/sessionhelper.php';
+
+
 
 class ComentModel
 {
-
     private $db;
-    private $helper;
 
     function __construct()
     {
-
+        
         $user = 'root';
         $pass = '';
-        $dbname = 'ahs';
+        $dbname = 'ahs'; 
         $host = 'localhost';
         $port = '3306';
 
         $this->db  = new PDO("mysql:host=$host:$port;dbname=$dbname", $user, $pass);
-        $this->helper = new SessionHelper();
+        
+       
     }
 
     function guardarComentario($comentario, $puntuacion, $idUser, $ideEpi)
     {
-        $query = $this->db->prepare('INSERT INTO comentarios(comentario, puntuacion , id_usuario, id_episodio) VALUES(?, ?)');
+        $sql = 'INSERT INTO comentarios(comentario, puntuacion , id_usuario, id_episodio) VALUES(?, ?)';
+        $query = $this->db->prepare($sql);
         $query->execute([$comentario, $puntuacion, $idUser, $ideEpi]);
        
     }

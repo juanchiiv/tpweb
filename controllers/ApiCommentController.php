@@ -3,15 +3,22 @@
 require_once 'views/ApiView';
 require_once 'models/comentModel.php';
 
-class ApiCommentController extends ApiController
+class ApiCommentController
 {
     private $model;
     private $view;
+    private $data;
+
     public function __construct()
     {
-        parent::__construct();
         $this->model = new ComentModel();
-        $this->view = new APIView();
+        $this->view = new ApiView();
+        $this->data = file_get_contents("php://input");
+    }
+
+    function getData()
+    {
+        return json_decode($this->data);
     }
 
     function getComents($params = [])

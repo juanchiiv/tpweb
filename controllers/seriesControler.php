@@ -47,6 +47,14 @@ class SeriesController
         $logueado = $this->helper->checkUser();
         $rol = $this->helper->getRol();
         $this->view->renderEpiTemp($episodios, $logueado, $temporadas, $rol);
-    
+    }
+
+    function showEpiInfo($id)
+    {
+        $episodios = $this->episodModel->getEpisodioId($id);
+        $temporadas = $this->tempoModel->getTemporadas();
+        $logueado = $this->helper->checkUser();
+        $rol = $this->helper->getRol();
+        $this->view->renderEpisodio($episodios, $logueado, $temporadas, $rol);
     }
 }

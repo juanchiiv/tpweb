@@ -1,5 +1,6 @@
 <?php
 
+
 class SeriesModel
 {
 
@@ -7,7 +8,6 @@ class SeriesModel
 
     function __construct()
     {
-
         $user = 'root';
         $pass = '';
         $dbname = 'ahs';
@@ -66,7 +66,7 @@ class SeriesModel
         return $temporada;
     }
 
-    function getEpId($id)
+    function getEpisodioId($id)
     {
         $sql = 'select * from episodios WHERE id_episodios= ? ';
         $sentencia = $this->db->prepare($sql);

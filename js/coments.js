@@ -16,23 +16,24 @@ let app = new Vue({
 });
 
 
-document.querySelector(".btn-comentarios").addEventListener('click', getComents);
 
-async function getComents(event) {
-    event.preventDefault();
 
+async function getComents() {
+   
     let body = document.getElementById("coments");
     body.innerHTML = 'Loading..';
-
+    let id = document.getElementById("id_episodio").value;
     try {
         let res = await fetch('api/comentarios/' + id);
         let json = await res.jason();
         coments = json;
+        
     } catch (error) {
         console.log("error");
     }
 }
 
+getComents();
 
 async function borrarComent(id) {
    

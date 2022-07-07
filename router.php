@@ -77,6 +77,9 @@ switch ($params[0]) {
     case 'verTemp':
         $seriesControler->showEpiTemp($params[1]);
         break;
+    case 'verEpisodio':
+        $seriesControler->showEpiInfo($params[1]);
+        break;
     case 'usuarios':
         $userControler->getUsuarios();
         break;

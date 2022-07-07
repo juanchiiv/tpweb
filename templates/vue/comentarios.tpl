@@ -1,6 +1,5 @@
-{include file="serie.tpl"}
 
-{{literal}
+{literal}
     <div id="coments">
         <section id="template-vue-coments">
             <h3> {{ subtitle }} </h3>
@@ -21,10 +20,7 @@
         </section>
     </div>
 
-{/literal}}
+{/literal}
 
-{if ($logueado)}
-    {include file="userCometarios.tpl"}
-{/if}
 
-{include file="footer.tpl"}
+
