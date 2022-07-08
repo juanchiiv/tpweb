@@ -89,7 +89,7 @@ class UserController
     function showEditEpi($id)
     {
         $temp = $this->serieModel->getTemporadas();
-        $episodio = $this->serieModel->getEpId($id);
+        $episodio = $this->serieModel->getEpisodioId($id);
         $logueado = $this->helper->checkUser();
         $this->view->renderEditEpi($temp, $logueado, $episodio);
     }
