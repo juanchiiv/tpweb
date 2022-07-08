@@ -69,7 +69,8 @@ let addComent = new Vue({
   });
 
   async function agregarComent(puntuacion, coment) {
-    
+
+    let id = document.querySelector("#id_episodio").value;
 
     let data = {
         id_episodio: id,

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'views/ApiView';
+require_once 'api/ApiView.php';
 require_once 'models/comentModel.php';
 
 class ApiCommentController
@@ -30,7 +30,7 @@ class ApiCommentController
             $comentario = $this->model->getComents($params[":ID"]);
             if (!empty($comentario)) {
                 return $this->view->response($comentario, 200);
-            }else {
+            } else {
                 $error = "No hay comentarios";
                 return $this->view->response($error, 404);
             }
@@ -41,13 +41,19 @@ class ApiCommentController
     {
         // devuelve el objeto JSON enviado por POST     
         $body = $this->getData();
-
+        
         // inserta el comentario
         $comentario = $body->comentario;
         $puntuacion = $body->puntuacion;
         $idUser = $body->id_usuario;
-        $idEpi = $body->i_episodio;
-        $comentario = $this->model->guardarComentario($comentario, $puntuacion, $idUser, $idEpi);
+        $idEpi = $body->id_episodio;
+        $exitosa = $this->model->guardarComentario($comentario, $puntuacion, $idUser, $idEpi);
+
+        if ($exitosa)
+            $this->view->response($body, 200);
+        else {
+            $this->view->response(null, 404);
+        }
     }
 
     function borrarComentario($params = [])
@@ -61,5 +67,4 @@ class ApiCommentController
         } else
             $this->view->response("comentario id=$comentario_id not found", 404);
     }
-
 }
