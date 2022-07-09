@@ -46,7 +46,7 @@ class LoginController
 
         //Si el usuario existe y las contraseñas coinciden
         if ($user && password_verify($userPassword, ($user->password))) {
-            $this->helper->iniciaSesion($user->rol);
+            $this->helper->iniciaSesion($user);
             $logueado = $this->helper->checkUser();
             $this->view->renderHome($logueado, $user->rol);
         } else {

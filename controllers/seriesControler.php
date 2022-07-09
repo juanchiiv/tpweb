@@ -2,12 +2,16 @@
 require_once 'views/seriesView.php';
 require_once 'models/seriesModel.php';
 
+
+
 class SeriesController
 {
     private $view;
     private $tempoModel;
     private $episodModel;
     private $helper;
+
+
 
     function __construct()
     {
@@ -53,8 +57,9 @@ class SeriesController
     {
         $episodios = $this->episodModel->getEpisodioId($id);
         $temporadas = $this->tempoModel->getTemporadas();
+        $id_user = $this->helper->getId();
         $logueado = $this->helper->checkUser();
         $rol = $this->helper->getRol();
-        $this->view->renderEpisodio($episodios, $logueado, $temporadas, $rol);
+        $this->view->renderEpisodio($episodios, $logueado, $temporadas, $rol, $id_user);
     }
 }

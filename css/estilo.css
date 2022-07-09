@@ -1,15 +1,108 @@
 .portada {
     height: 300px;
-    max-width: 100% ;
+    max-width: 100%;
     padding: 0%;
     background-image: url(images/portada.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    
+
 }
+
 h1 {
     text-align: center;
 }
+
 p {
     text-align: justify;
+}
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+.nav li {
+
+    float: left;
+}
+
+.nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: black;
+}
+
+.nav a:hover {
+    background-color: red;
+
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background-color: grey;
+}
+
+tr:hover {
+    background-color: lightgrey;
+}
+
+input,
+select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+
+button[type=submit] {
+    width: 50%;
+    background-color: gray;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+.form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 50%;
+
+
+
+}
+
+ul li {
+    list-style-type: none;
 }

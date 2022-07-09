@@ -62,6 +62,7 @@ let addComent = new Vue({
       save() {
         this.form.comentario = this.$refs["coment"].value;
         let coment = this.form.comentario;
+        this.form.puntuacion = this.$refs["puntos"].value;
         let puntuacion = this.form.puntuacion;
         agregarComent(puntuacion, coment);
       },
@@ -71,7 +72,8 @@ let addComent = new Vue({
   async function agregarComent(puntuacion, coment) {
 
     let id = document.querySelector("#id_episodio").value;
-
+    let id_user = document.querySelector("#id_user").value;
+    
     let data = {
         id_episodio: id,
         id_usuario: id_user,
@@ -79,7 +81,7 @@ let addComent = new Vue({
         puntuacion: puntuacion
 
     }
-
+    console.log(data);
     try {
         let res = await fetch("api/comentarios", {
             "method": "POST",

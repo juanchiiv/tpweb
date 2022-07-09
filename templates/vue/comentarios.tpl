@@ -14,7 +14,7 @@
                     <strike>{{ comentario.id_usuario }} - {{ comentario.comentario }} - {{ comentario.puntuacion }}
                     </strike>
                     <span v-if="rol== admin"></span>
-                    <a :data-id="comentario.id" class="btn-eliminar" v-on:click="eliminar" href="#">Eliminar</a>
+                    <button :data-id="comentario.id" class="btn-eliminar" @click.event="eliminar">Eliminar</button>
                 </tr>
             </table>
         </section>

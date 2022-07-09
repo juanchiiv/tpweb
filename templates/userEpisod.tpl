@@ -1,5 +1,5 @@
 <h2>Episodios</h2>
-<form action="agregarEpisod" method="post">
+<form action="agregarEpisod" method="post" class="form">
     <ul>
         <li><label>Nombre <input type="text" name="nombre"></label></li>
         <li><label>Descripcion<textarea type="text" name="descripcion"></textarea></label></li>

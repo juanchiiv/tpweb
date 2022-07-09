@@ -3,8 +3,8 @@
         <tr>
             <th>Nº Temporada</th>
             <th>Nombre</th>
+            <th>Ver</th>
             {if $logueado}   
-                <th>Ver</th>
                 <th>Modificar</th>
                 <th>Borrar</th>  
             {/if} 

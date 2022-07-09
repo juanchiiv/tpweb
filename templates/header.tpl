@@ -16,7 +16,7 @@
 
     </div>
     <nav>
-        <ul>
+        <ul class="nav">
             <li><a href="episodios">Episodios</a></li>
             <li><a href="temporadas">Temporadas</a></li>
             {if !$logueado }
