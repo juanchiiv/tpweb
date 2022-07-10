@@ -27,6 +27,7 @@
         {/if}
 
     </tr>
+</table>
         <input type="hidden" id="id_episodio" value="{$episodio->id_episodios}"></input>
         <input type="hidden" id="id_user" value="{$user}"></input>
     {include file="vue/comentarios.tpl" }

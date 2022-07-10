@@ -13,11 +13,11 @@
                     <td>{$temporada.nombre_temporada}</td>
                 {/if}
             {/foreach}
-            <td><a href="verEpisodio/{$serie.id_episodios}" >Ver +</a></td>
+            <td><a href="verEpisodio/{$serie.id_episodios}">Ver +</a></td>
         </tr>
     {/foreach}
     {if $logueado}
         {include file= "userEpisod.tpl"}
     {/if}
-
+</table>
 {include file="footer.tpl"}
