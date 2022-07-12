@@ -55,11 +55,11 @@ class SeriesController
 
     function showEpiInfo($id)
     {
-        $episodios = $this->episodModel->getEpisodioId($id);
-        $temporadas = $this->tempoModel->getTemporadas();
+        $episodio = $this->episodModel->getEpisodioId($id);
+        $temporada = $this->tempoModel->getTempId($episodio->id_temporada_FK);
         $id_user = $this->helper->getId();
         $logueado = $this->helper->checkUser();
         $rol = $this->helper->getRol();
-        $this->view->renderEpisodio($episodios, $logueado, $temporadas, $rol, $id_user);
+        $this->view->renderEpisodio($episodio, $logueado, $temporada->nombre_temporada, $rol, $id_user);
     }
 }

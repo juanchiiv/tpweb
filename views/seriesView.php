@@ -56,14 +56,14 @@ class SeriesView
         $plantilla->display('templates/serie.tpl');
     }
 
-    function renderEpisodio($episodio, $logueado, $temporadas, $rol = null, $user = null)
+    function renderEpisodio($episodio, $logueado, $temporada, $rol = null, $user = null)
     {
         $plantilla = new Smarty();
 
         $plantilla->assign('BASE_URL', BASE_URL);
         $plantilla->assign('logueado', $logueado);
         $plantilla->assign('episodio', $episodio);
-        $plantilla->assign('temporadas', $temporadas);
+        $plantilla->assign('nombre_temporada', $temporada);
         $plantilla->assign('rol', $rol);
         $plantilla->assign('user', $user);
 

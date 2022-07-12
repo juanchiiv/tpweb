@@ -20,20 +20,20 @@ class ComentModel
 
     function guardarComentario($comentario, $puntuacion, $idUser, $ideEpi)
     {
-        $sql = 'INSERT INTO comentarios(comentario, puntuacion , id_usuario, id_episodio) VALUES(?, ?)';
+        $sql = 'INSERT INTO comentarios(comentario, puntuacion , id_usuario, id_episodio) VALUES(?, ?, ?, ?)';
         $query = $this->db->prepare($sql);
         return $query->execute([$comentario, $puntuacion, $idUser, $ideEpi]);
     }
 
     function borrarComentario($id)
     {
-        $sql = "DELETE FROM comentarios WHERE id_episodio = ?";
+        $sql = "DELETE FROM comentarios WHERE id = ?";
 
         $sentencia = $this->db->prepare($sql);
         $sentencia->execute([$id]);
     }
 
-    function getComents($id = null)
+    function getComents($id)
     {
         $sql = 'select * from comentarios WHERE id_episodio = ?';
         $sentencia = $this->db->prepare($sql);
@@ -42,4 +42,15 @@ class ComentModel
 
         return $comentarios;
     }
+    
+    function getComentByIdComent($id)
+    {
+        $sql = 'select * from comentarios WHERE id = ?';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
+        $comentario = $sentencia->fetch(PDO::FETCH_OBJ);
+
+        return $comentario;
+    }
+    
 }

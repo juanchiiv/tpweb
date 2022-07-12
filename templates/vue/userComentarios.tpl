@@ -1,5 +1,5 @@
 {literal}
-<h3>{{ subtitle }}</h3>
+<h3> Añadir comentario </h3>
 <div id="form-coment" class="form">
     <ul>
         <li><label>Comentario<textarea type="text" ref="coment"></textarea></label></li>

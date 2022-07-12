@@ -15,11 +15,7 @@
         <td>{$episodio->nombre}</td>
         <td>{$episodio->descripcion}</td>
         <td>{$episodio->audiencia}</td>
-        {foreach from=$temporadas item=temporada}
-            {if $temporada.id_temporada == $episodio->id_temporada_FK}
-                <td>{$temporada.nombre_temporada}</td>
-            {/if}
-        {/foreach}
+        <td>{$nombre_temporada}</td>
 
         {if $logueado}
             <td><a href="modificarEpi/{$episodio->id_episodios}">Modificar</a></td>
@@ -28,8 +24,8 @@
 
     </tr>
 </table>
-        <input type="hidden" id="id_episodio" value="{$episodio->id_episodios}"></input>
-        <input type="hidden" id="id_user" value="{$user}"></input>
+        <input type="hidden" id="id_episodio" value="{$episodio->id_episodios}">
+        <input type="hidden" id="id_user" value="{$user}">
     {include file="vue/comentarios.tpl" }
     {if ($logueado)}
         {include file="vue/userComentarios.tpl"}

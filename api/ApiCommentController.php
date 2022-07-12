@@ -23,25 +23,15 @@ class ApiCommentController
 
     function getComents($params = [])
     {
-        if (empty($params)) {
-            $comentarios = $this->model->getComents();
-            return $this->view->response($comentarios, 200);
-        } else {
-            $comentario = $this->model->getComents($params[":ID"]);
-            if (!empty($comentario)) {
-                return $this->view->response($comentario, 200);
-            } else {
-                $error = "No hay comentarios";
-                return $this->view->response($error, 404);
-            }
-        }
+        $comentarios = $this->model->getComents($params[":ID"]);
+        return $this->view->response($comentarios, 200);
     }
 
     function agregarComentario($params = [])
     {
         // devuelve el objeto JSON enviado por POST     
         $body = $this->getData();
-        
+
         // inserta el comentario
         $comentario = $body->comentario;
         $puntuacion = $body->puntuacion;
@@ -59,8 +49,7 @@ class ApiCommentController
     function borrarComentario($params = [])
     {
         $comentario_id = $params[':ID'];
-        $comentario = $this->model->getComents($comentario_id);
-
+        $comentario = $this->model->getComentByIdComent($comentario_id);
         if ($comentario) {
             $this->model->borrarComentario($comentario_id);
             $this->view->response("comentario id=$comentario_id eliminada con éxito", 200);
