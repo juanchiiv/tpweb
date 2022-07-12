@@ -27,6 +27,18 @@ class ApiCommentController
         return $this->view->response($comentarios, 200);
     }
 
+    /*function getComents($params = [])
+    {   
+        $orden = $params[":ORDER"];
+        $id = $params[":ID"];
+        if ($orden == 1){
+        $comentarios = $this->model->getComentsOrderAsc();
+        }else{
+            $comentarios = $this->model->getComentsOrderDes();
+        }
+        return $this->view->response($comentarios, 200);
+    }
+    */
     function agregarComentario($params = [])
     {
         // devuelve el objeto JSON enviado por POST     

@@ -9,6 +9,7 @@ $router = new Router();
 $router->addRoute('comentarios/:ID', 'GET', 'ApiCommentController', 'getComents');
 $router->addRoute('comentarios/:ID', 'DELETE', 'ApiCommentController', 'borrarComentario');
 $router->addRoute('comentarios', 'POST', 'ApiCommentController', 'agregarComentario');
+//$router->addRoute('comentarios/:ID/:ORDER', 'GET', 'ApiCommentController', 'getComentsOrder');
 
 
 

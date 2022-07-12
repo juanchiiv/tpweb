@@ -42,7 +42,7 @@ class ComentModel
 
         return $comentarios;
     }
-    
+
     function getComentByIdComent($id)
     {
         $sql = 'select * from comentarios WHERE id = ?';
@@ -52,5 +52,24 @@ class ComentModel
 
         return $comentario;
     }
-    
+
+    /*function getComentsOrderDes($id)
+    {
+        $sql = 'select * from comentarios WHERE id = ? ORDER BY puntuacion DESC';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
+        $comentarios = $sentencia->fetch(PDO::FETCH_OBJ);
+
+        return $comentarios;
+    }
+
+    function getComentsOrderAsc($id)
+    {
+        $sql = 'select * from comentarios WHERE id = ? ORDER BY puntuacion ASC';
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
+        $comentarios = $sentencia->fetch(PDO::FETCH_OBJ);
+
+        return $comentarios;
+    }*/
 }
