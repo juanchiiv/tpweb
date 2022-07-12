@@ -26,6 +26,7 @@
 </table>
         <input type="hidden" id="id_episodio" value="{$episodio->id_episodios}">
         <input type="hidden" id="id_user" value="{$user}">
+        <input type="hidden" id="rol" value="{$rol}">
     {include file="vue/comentarios.tpl" }
     {if ($logueado)}
         {include file="vue/userComentarios.tpl"}

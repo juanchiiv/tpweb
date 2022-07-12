@@ -19,10 +19,15 @@ let app = new Vue({
 
 
 
-
 async function getComents() {
 
     let id = document.getElementById("id_episodio").value;
+    let roll = document.getElementById("rol").value;
+    if (roll == "admin") {
+        app.rol = true;
+    } else {
+        app.rol = false;
+    }
     try {
         let res = await fetch('api/comentarios/' + id);
         let json = await res.json();
@@ -50,8 +55,7 @@ async function borrarComent(id) {
         let res = await fetch("api/comentarios/" + id, {
             "method": "DELETE"
         });
-        let json = await res.text();
-        console.log(json);
+        
         if (res.status === 200) {
             getComents();
         }
@@ -98,8 +102,7 @@ async function agregarComent(puntuacion, coment) {
             "headers": { "Content-type": "application/json" },
             "body": JSON.stringify(data)
         });
-        let json = await res.text();
-        console.log(json);
+        
         if (res.status === 200) {
             getComents();
         }
