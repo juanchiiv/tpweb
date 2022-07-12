@@ -10,7 +10,7 @@
                     <th>Puntuacion</th>
                 </tr>
                 <tr>
-                    <td v-for="comentario in comentarios"></td>
+                    <td v-for="comentario in coments"></td>
                     <strike>{{ comentario.id_usuario }} - {{ comentario.comentario }} - {{ comentario.puntuacion }}
                     </strike>
                     <span v-if="rol== admin"></span>
